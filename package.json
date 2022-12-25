@@ -1,0 +1,54 @@
+{
+  "name": "paperbot",
+  "version": "1.0.0",
+  "description": "A fully-featured discord bot template written in Typescript",
+  "license": "MIT",
+  "main": "build/main.js",
+  "scripts": {
+    "build": "npm run build:clean && npm run build:compile && npm run build:plugins && npm run type:check",
+    "build:start": "npm run build && npm run start",
+    "build:compile": "swc src -d build -D && rimraf build/plugins/**/node_modules/",
+    "start": "NODE_ENV=production node build/main.js",
+    "dev": "NODE_ENV=development nodemon -L --watch src --exec node -r @swc-node/register src/main.ts",
+    "dev:test": "NODE_ENV=development ts-node src/main.ts",
+    "dev:start": "NODE_ENV=production node -r @swc-node/register src/main.ts",
+    "type:check": "tsc --pretty --skipLibCheck --noEmit",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "prettier --write '**/*.ts' && eslint . --ext .ts --fix",
+    "fetch:voices": "curl 'https://api.uberduck.ai/voices?mode=tts-basic' > assets/voices.json"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/voice": "^0.14.0",
+    "@paperfeed/eslint-config": "^1.0.3",
+    "chatgpt": "^3.3.3",
+    "discord-api-types": "^0.37.24",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "ffmpeg-static": "^5.1.0",
+    "glob": "^8.0.3",
+    "libsodium-wrappers": "^0.7.10",
+    "openai": "^3.1.0",
+    "prettier": "^2.8.1",
+    "puppeteer": "^19.4.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@swc-node/register": "^1.5.4",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.3.24",
+    "@types/glob": "^8.0.0",
+    "@types/node": "^18.11.17",
+    "@types/uuid": "^9.0.0",
+    "eslint": "^8.30.0",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.1",
+    "typescript": "^4.9.4"
+  },
+  "engines": {
+    "node": ">=16.9.0",
+    "npm": ">=8.0.0"
+  }
+}
