@@ -1,3 +1,32 @@
 {
-  "ignoreDynamic": true
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+      "dynamicImport": true
+    },
+    "experimental": {
+      "plugins": [
+        ["swc-plugin-node-cjs-interop", {
+          // List the packages you're experiencing problems
+          // importing from Node.js' native ESM.
+          // I.e. list the packages in the simulated ESM format.
+          "packages": ["chatgpt"]
+        }]
+      ]
+    }
+  },
+  "module": {
+    // You can specify "commonjs", "es6", "amd", "umd"
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false,
+    "ignoreDynamic": true
+  }
+}
+{
+  "jsc": {
+
+  }
 }

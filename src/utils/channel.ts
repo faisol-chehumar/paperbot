@@ -10,7 +10,7 @@ import {
   VoiceBasedChannel,
 } from 'discord.js'
 
-import { createDiscordJSAdapter } from './adapter'
+import { createDiscordJSAdapter } from './adapter.js'
 
 export async function connectToChannel(channel: VoiceBasedChannel) {
   const connection = joinVoiceChannel({

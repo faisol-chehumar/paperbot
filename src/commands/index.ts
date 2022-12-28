@@ -4,16 +4,18 @@ import {
   ChatInputCommandInteraction,
   Collection,
   Interaction,
+  Message,
   ModalSubmitInteraction,
   Routes,
   SelectMenuInteraction,
   SlashCommandBuilder,
 } from 'discord.js'
-import glob from 'glob'
+import * as fs from 'fs'
 
-import { APP_ID, discordAPI } from '../api/discordAPI'
+import { APP_ID, discordAPI } from '../api/discordAPI.js'
+import { discordClient } from '../main.js'
 
-let commands: CommandInterface[] = []
+let commands: CommandInterface[]
 let commandCollection: Collection<string, CommandInterface>
 
 export interface CommandInterface {
@@ -23,17 +25,18 @@ export interface CommandInterface {
   onSelectMenu?: (interaction: SelectMenuInteraction) => Promise<void>
   onAutocomplete?: (interaction: AutocompleteInteraction) => Promise<void>
   onModalSubmit?: (interaction: ModalSubmitInteraction) => Promise<void>
+  onMention?: (message: Message) => Promise<void>
 }
 
 export async function loadCommandFiles() {
-  const files = glob.sync(`${__dirname}/**/[!index]*.ts`)
-  commands = (
-    await Promise.all(
-      files.map(
-        (file) => import(file.replace(__dirname, '.').replace('.ts', ''))
-      )
-    )
-  ).map((command) => command.default)
+  const files = fs
+    .readdirSync('./src/commands')
+    .map((file) => `./${file}`)
+    .filter((file) => !file.endsWith('index.ts'))
+
+  commands = await Promise.all(
+    files.map((file) => import(file).then((m) => m.default))
+  )
   commandCollection = new Collection<string, CommandInterface>()
 
   commands.forEach((command) => {
@@ -88,20 +91,17 @@ export async function initializeCommandHandler() {
         await command.onExecute(interaction)
       } catch (error) {
         console.error(error)
+        const response = {
+          content: `Something went wrong running the command ${
+            interaction.commandName
+          }:\n${typeof error === 'object' ? JSON.stringify(error) : error}`,
+          ephemeral: true,
+        }
+
         if (interaction.deferred) {
-          await interaction.followUp({
-            content: `Something went wrong running the command ${
-              interaction.commandName
-            }:\n${JSON.stringify(error)}`,
-            ephemeral: true,
-          })
+          await interaction.followUp(response)
         } else {
-          await interaction.reply({
-            content: `Something went wrong running the command ${
-              interaction.commandName
-            }:\n${JSON.stringify(error)}`,
-            ephemeral: true,
-          })
+          await interaction.reply(response)
         }
       }
     }
@@ -129,15 +129,29 @@ function handleInteractionResponse(interaction: Interaction) {
       return
     }
     command?.onButton?.(interaction)
-    console.log('Button pressed!', interaction)
+    // console.log('Button pressed!', interaction)
   } else if (interaction.isAutocomplete()) {
     if (!interaction.commandName) return
     const command = commandCollection.get(interaction.commandName)
     command?.onAutocomplete?.(interaction)
-    console.log('Autocomplete used!', interaction)
+    // console.log('Autocomplete used!', interaction)
   } else if (interaction.isModalSubmit()) {
-    console.log('Message component used!', interaction)
+    // console.log('Message component used!', interaction)
   } else if (interaction.isStringSelectMenu()) {
-    console.log('Select menu changed!', interaction)
+    // console.log('Select menu changed!', interaction)
   }
+}
+
+export function messageHandler(message: Message) {
+  if (
+    !discordClient.user ||
+    message.mentions.everyone ||
+    !message.mentions.has(discordClient.user.id)
+  ) {
+    return
+  }
+
+  const command = commandCollection.get('chatgpt')
+  console.log('Mentioned by', message.author.username, '-', message.content)
+  command?.onMention?.(message)
 }

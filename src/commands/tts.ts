@@ -5,12 +5,19 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from 'discord.js'
+import { existsSync } from 'fs'
+import fuzzysort from 'fuzzysort'
 
-import { checkAudioStatus, synthesizeUberDuckAudio } from '../api/uberduck'
-import { UberDuckVoice, UberDuckVoices } from '../api/uberduckVoiceData'
-import { getVoiceChannelOfInteraction } from '../utils/channel'
-import { playAudioFileOnChannel } from '../utils/voice'
-import { CommandInterface } from './index'
+import { checkAudioStatus, synthesizeUberDuckAudio } from '../api/uberduck.js'
+import { UberDuckVoice, UberDuckVoices } from '../api/uberduckVoiceData.js'
+import { getVoiceChannelOfInteraction } from '../utils/channel.js'
+import { playAudioFileOnChannel } from '../utils/voice.js'
+import { CommandInterface } from './index.js'
+
+const autocompleteTargets = UberDuckVoices.map((voice) => ({
+  ...voice,
+  prepared: fuzzysort.prepare(voice.name),
+}))
 
 const tts: CommandInterface = {
   data: new SlashCommandBuilder()
@@ -32,10 +39,13 @@ const tts: CommandInterface = {
     const focusedOption = interaction.options.getFocused(true)
 
     if (focusedOption.name === 'voice') {
-      const value = focusedOption.value.toLowerCase()
-      const matchingVoices = UberDuckVoices.filter((voiceData) =>
-        voiceData.name.toLowerCase().includes(value)
-      ).slice(0, 25)
+      const value = focusedOption.value
+      // const matchingVoices = UberDuckVoices.filter((voiceData) =>
+      //   voiceData.name.toLowerCase().includes(value)
+      // ).slice(0, 25)
+      const matchingVoices = fuzzysort
+        .go(value, autocompleteTargets, { key: 'prepared', limit: 25 })
+        .map((result) => result.obj)
       await interaction.respond(matchingVoices)
     }
   },
@@ -43,14 +53,14 @@ const tts: CommandInterface = {
     const uuid = interaction.customId
 
     const voiceChannel = getVoiceChannelOfInteraction(interaction)
-    const path = await checkAudioStatus(uuid)
+    let path = `./.cache/uberduck/${uuid}.mp3`
+    if (!existsSync(path)) {
+      const url = await checkAudioStatus(uuid)
+      if (!url) throw new Error('Audio file is no longer available')
+      path = url
+    }
 
     await interaction.deferUpdate()
-
-    if (!path) {
-      await interaction.followUp({ content: 'Test' })
-      return
-    }
 
     if (!voiceChannel) {
       await interaction.followUp({
@@ -80,20 +90,18 @@ const tts: CommandInterface = {
     // Confirm interaction but defer, so that we have time to synthesise the audio
     await interaction.deferReply()
 
-    const { isError, path, uuid } = await synthesizeUberDuckAudio(
+    const { error, isError, path, url, uuid } = await synthesizeUberDuckAudio(
       voice,
       message
     )
 
     if (isError) {
-      await interaction.followUp(
-        'Something went wrong while trying to synthesize the audio'
-      )
+      await interaction.followUp({
+        content: error,
+        ephemeral: true,
+      })
       return
     }
-
-    // const assetPath = `./assets/audio/itiswednesday.mp3`
-    await playAudioFileOnChannel(voiceChannel, path)
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
@@ -105,9 +113,9 @@ const tts: CommandInterface = {
     const embed = new EmbedBuilder()
       .setTitle('Finished synthesizing audio')
       .addFields(
-        { name: 'Message', value: message },
         { inline: true, name: 'Voice', value: voice },
-        { inline: true, name: 'Audio File', value: path }
+        { inline: true, name: 'Message', value: message },
+        { name: 'Audio File', value: url }
       )
 
     await interaction.followUp({
@@ -115,6 +123,8 @@ const tts: CommandInterface = {
       components: [row],
       embeds: [embed],
     })
+
+    await playAudioFileOnChannel(voiceChannel, path)
   },
 }
 

@@ -3,8 +3,17 @@ import dotenv from 'dotenv'
 import { watch } from 'fs'
 import * as path from 'path'
 import * as process from 'process'
+import * as url from 'url'
 
-import { initializeCommandHandler } from './commands'
+// const __filename = url.fileURLToPath(import.meta.url);
+export const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+
+import {
+  initializeCommandHandler,
+  loadCommandFiles,
+  messageHandler,
+} from './commands/index.js'
+import { post } from './utils/get.js'
 
 dotenv.config()
 
@@ -17,7 +26,9 @@ const intents = [
   GatewayIntentBits.GuildMessages,
 ]
 
-global.appRoot = path.join(path.resolve(__dirname), '../')
+const appRoot = path.join(path.resolve(__dirname), '../')
+
+export let discordClient: Client
 
 async function onReady(client: Client) {
   try {
@@ -29,31 +40,32 @@ async function onReady(client: Client) {
 
 async function initializeBot() {
   try {
-    const client = new Client({ intents })
+    discordClient = new Client({ intents })
+    await loadCommandFiles()
     const commandHandler = await initializeCommandHandler()
 
-    client.on(Events.InteractionCreate, commandHandler)
-    client.once(Events.ClientReady, onReady)
+    discordClient.on(Events.InteractionCreate, commandHandler)
+    discordClient.on(Events.MessageCreate, messageHandler)
+    discordClient.once(Events.ClientReady, onReady)
 
-    await client.login(DISCORD_BOT_TOKEN)
+    await discordClient.login(DISCORD_BOT_TOKEN)
 
     if (NODE_ENV === 'development') {
-      client.user?.setPresence({
+      discordClient.user?.setPresence({
         activities: [{ name: 'in development' }],
         status: 'idle',
       })
 
-      const watchFolder = `${global.appRoot}src/commands`
-      console.log(`Watching ${watchFolder} for changes`)
-      watch(watchFolder, async (eventType, filename) => {
-        if (eventType === 'change') {
-          console.log(`Updating Command: ${watchFolder + filename}`)
-          delete require.cache[require.resolve(watchFolder + filename)]
-          client.off(Events.InteractionCreate, commandHandler)
-          const reloadedCommandHandler = await initializeCommandHandler()
-          client.on(Events.InteractionCreate, reloadedCommandHandler)
-        }
-      })
+      // const watchFolder = `${appRoot}src\\commands`
+      // console.log(`Watching ${watchFolder} for changes`)
+      // watch(watchFolder, async (eventType, filename) => {
+      //   if (eventType === 'change') {
+      //     console.log(`Updating Command: ${watchFolder + filename}`)
+      //     client.off(Events.InteractionCreate, commandHandler)
+      //     const reloadedCommandHandler = await initializeCommandHandler()
+      //     client.on(Events.InteractionCreate, reloadedCommandHandler)
+      //   }
+      // })
     }
   } catch (e) {
     console.error('Could not initialize bot', e)

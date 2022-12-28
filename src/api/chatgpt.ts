@@ -1,37 +1,41 @@
-import { ChatGPTAPIBrowser } from 'chatgpt'
-import { Collection } from 'discord.js'
+import { ChatResponse } from 'chatgpt'
 
-if (!process.env.OPENAI_EMAIL || !process.env.OPENAI_PASSWORD) {
-  throw new Error('OPENAI_EMAIL and OPENAI_PASSWORD are required')
+import authJson from '../../auth.json' assert { type: 'json' }
+import { post } from '../utils/get.js'
+
+if (!authJson.clearanceToken || !authJson.sessionToken) {
+  throw new Error(
+    'clearance Token and sessionToken are required, run the chatgpt script to retrieve them'
+  )
 }
 
-const chatgptAPI = new ChatGPTAPIBrowser({
-  email: process.env.OPENAI_EMAIL,
-  isGoogleLogin: true,
-  password: process.env.OPENAI_PASSWORD,
-})
-
-let hasSession = false
-
-chatgptAPI.initSession().then(() => console.log('ChatGPT session initialized'))
-const conversations = new Collection<string, string>()
-
-export async function getChatGPTResponse(memberId: string, prompt: string) {
-  if (!hasSession) {
-    await chatgptAPI.initSession()
-    hasSession = true
-  }
-
-  let conversationId = conversations.get(memberId)
-
-  const response = await chatgptAPI.sendMessage(prompt, {
-    conversationId: conversationId,
-    timeoutMs: 2 * 60 * 1000,
+export async function getChatGPTResponse(
+  guildId: string | null,
+  memberId: string | null,
+  prompt: string
+): Promise<ChatResponse> {
+  return await post<ChatResponse>('http://localhost:3000/chatgpt', {
+    body: JSON.stringify({
+      guildId,
+      memberId,
+      prompt,
+    }),
   })
-
-  if (!conversationId) {
-    conversations.set(memberId, response.conversationId)
-  }
-
-  return response
 }
+// export async function getChatGPTResponse(
+//   memberId: string,
+//   prompt: string
+// ): Promise<ChatResponse> {
+//   let conversationId = conversations.get(memberId)
+//
+//   const response = await chatgptAPI.sendMessage(prompt, {
+//     // conversationId: conversationId,
+//     timeoutMs: 2 * 60 * 1000,
+//   })
+//
+//   if (!conversationId) {
+//     conversations.set(memberId, response.conversationId)
+//   }
+//
+//   return response
+// }

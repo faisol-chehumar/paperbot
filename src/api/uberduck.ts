@@ -1,5 +1,8 @@
-import { get } from '../utils/get'
-import { UberDuckVoice } from './uberduckVoiceData'
+import { createWriteStream } from 'fs'
+import * as https from 'https'
+
+import { get } from '../utils/get.js'
+import { UberDuckVoice } from './uberduckVoiceData.js'
 
 interface UberDuckSpeakStatusResponse {
   failed_at: Date | null
@@ -8,20 +11,41 @@ interface UberDuckSpeakStatusResponse {
   path: string | null
   started_at: Date
 }
+
+type UberDuckSpeakResponse =
+  | {
+      isError: true
+      url: null
+      path: null
+      error: string
+    }
+  | {
+      isError: false
+      url: string
+      path: string
+      error?: undefined
+    }
+
 const uberduckToken = `Basic ${Buffer.from(
   `${process.env.UBERDUCK_API_KEY}:${process.env.UBERDUCK_API_SECRET}`
 ).toString('base64')}`
 
+let retryCount = 0
+
 /**
- * Returns an UUID that we can use to check the status of the audio
+ * Returns a UUID that we can use to check the status of the audio
  * @param voice - Which voice to use
  * @param message - The message to speak
  */
 export async function synthesizeUberDuckAudio(
   voice: UberDuckVoice,
   message: string
-) {
-  console.log('Creating audio request')
+): Promise<
+  UberDuckSpeakResponse & {
+    uuid: string
+  }
+> {
+  console.log(`Creating audio request [${voice}] - ${message}`)
   const response = await get<{ uuid: string }>(
     'https://api.uberduck.ai/speak',
     {
@@ -40,15 +64,38 @@ export async function synthesizeUberDuckAudio(
   )
   console.log(`Uberduck is synthesizing audio with UUID ${response.uuid}`)
 
-  const audioData = await waitUntilAudioIsReady(response.uuid)
-  return {
-    ...audioData,
-    uuid: response.uuid,
+  if (response.uuid === undefined) {
+    console.error('Probably tripped a language filter')
+    return {
+      error: 'You probably tripped a language filter or something, dirty man',
+      isError: true,
+      path: null,
+      url: null,
+      uuid: '',
+    }
+  }
+
+  try {
+    const audioData = await waitUntilAudioIsReady(response.uuid)
+
+    retryCount = 0
+    return {
+      ...audioData,
+      uuid: response.uuid,
+    }
+  } catch (error) {
+    retryCount++
+    if (retryCount <= 3) {
+      return synthesizeUberDuckAudio(voice, message)
+    } else {
+      throw new Error(
+        'Something went wrong while trying to synthesize the audio'
+      )
+    }
   }
 }
 
 export async function checkAudioStatus(uuid: string) {
-  // 15314253-e929-4859-99ff-e34a3f7b1f32
   console.log('Checking status of', uuid)
   const response = await get<UberDuckSpeakStatusResponse>(
     `https://api.uberduck.ai/speak-status?uuid=${uuid}`,
@@ -58,28 +105,50 @@ export async function checkAudioStatus(uuid: string) {
       },
     }
   )
-  console.log('Received', response)
   if (response.failed_at) {
     throw new Error('Failed to synthesize audio')
+  } else if (response.finished_at) {
+    console.log('Audio is ready at:', response.path)
   }
   return response.path
 }
 
 function waitUntilAudioIsReady(uuid: string) {
-  return new Promise<
-    { isError: true; path: null } | { isError: false; path: string }
-  >((resolve) => {
+  return new Promise<UberDuckSpeakResponse>((resolve, reject) => {
     const interval = setInterval(async () => {
       try {
-        const path = await checkAudioStatus(uuid)
-        if (path) {
+        const url = await checkAudioStatus(uuid)
+        if (url) {
           clearInterval(interval)
-          resolve({ isError: false, path })
+
+          https.get(url, (response) => {
+            const fileStream = createWriteStream(
+              `./.cache/uberduck/${uuid}.mp3`
+            )
+            response.pipe(fileStream)
+            response.on('error', (error) => {
+              console.error('Something went wrong piping the response', error)
+              resolve({
+                error: error.toString(),
+                isError: true,
+                path: null,
+                url: null,
+              })
+            })
+            fileStream.on('finish', () => {
+              resolve({
+                isError: false,
+                path: `./.cache/uberduck/${uuid}.mp3`,
+                url,
+              })
+            })
+          })
         }
       } catch (error) {
         clearInterval(interval)
-        resolve({ isError: true, path: null })
+        console.error('Something went wrong while checking the audio status')
+        reject(error)
       }
-    }, 1000)
+    }, 1500)
   })
 }

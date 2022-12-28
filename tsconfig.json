@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "commonjs",
+    "module": "ESNext",
     "outDir": "./build",
     "rootDir": ".",
     "strict": true,
     "strictPropertyInitialization": false,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
@@ -18,15 +18,16 @@
     "paths": {
       "@api/middlewares": ["src/api/middlewares"],
       "@api/middlewares/*": ["src/plugins/*/api/middlewares"],
-      "~utils/*": ["src/utils/*"],
-      "~api/*": ["src/api/*"],
+      "~utils/*": ["---src/utils/*"],
+      "~api/*": ["---src/api/*"],
     },
-    "typeRoots": ["./node_modules/@types", "./src/types/*"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "scripts/**/*"],
   "exclude": ["build", "node_modules"],
   "paths": ["node_modules/*", "src/types/*"],
   "ts-node": {
+    "esm": true,
     "require": ["tsconfig-paths/register"]
   }
 }

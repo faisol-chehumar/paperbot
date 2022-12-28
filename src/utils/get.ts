@@ -1,16 +1,21 @@
 export const get = async <Data = unknown>(
-  ...parameters: Parameters<typeof fetch>
+  ...[url, init]: Parameters<typeof fetch>
 ) => {
-  const response = await fetch(...parameters)
+  const response = await fetch(url, init)
   return (await response.json()) as Data
 }
 
 export const post = async <Data = unknown>(
-  ...[url, ...rest]: Parameters<typeof fetch>
+  ...[url, init]: Parameters<typeof fetch>
 ) => {
   const response = await fetch(url, {
     method: 'POST',
-    ...rest,
+    ...init,
+    headers: {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+      ...init?.headers,
+    },
   })
   return (await response.json()) as Data
 }

@@ -7,7 +7,7 @@ import {
 } from '@discordjs/voice'
 import { VoiceBasedChannel } from 'discord.js'
 
-import { connectToChannel } from './channel'
+import { connectToChannel } from './channel.js'
 
 export const audioPlayer = createAudioPlayer()
 
