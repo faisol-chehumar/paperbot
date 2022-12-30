@@ -1,4 +1,3 @@
-import { writeFileSync } from 'fs'
 import WebSocket from 'ws'
 
 const API_URL = 'wss://runwayml-stable-diffusion-v1-5.hf.space/queue/join'
@@ -9,18 +8,51 @@ interface StableDiffusionImageResults {
   duration: number
 }
 
-interface StableDiffusionImageResponse {
-  msg: 'process_completed' | 'send_hash' | 'send_data'
-  output: {
-    data: string[][]
-    is_generating: boolean
-    duration: number
-    average_duration: number
-  }
+// Can be received after sending a hash
+export interface QueueMsg {
+  msg: 'estimation'
+  rank: number
+  rank_eta: number
+  avg_event_process_time: number
+  avg_event_concurrent_process_time: number
+  queue_eta: number
+  queue_size: number
+}
+
+export interface DataMsg {
+  fn_index: number //3
+  data: [string, string, number]
+  session_hash: string
+}
+
+interface TriggerMsg {
+  msg: 'send_hash' | 'send_data' | 'process_starts' | 'queue_full'
+}
+
+interface ProcessCompletedMsg {
+  msg: 'process_completed'
+  output:
+    | {
+        average_duration: number
+        data: string[][]
+        duration: number
+        is_generating: boolean
+      }
+    | {
+        error: string
+      }
   success: boolean
 }
 
-export function generateHash() {
+export type StableDiffusionMsg = TriggerMsg | ProcessCompletedMsg | QueueMsg
+
+// Should be sent after receiving 'send_hash'
+interface HashData {
+  session_hash: string
+  fn_index: number // 3
+}
+
+export function generateHash(fn_index = 2): HashData {
   const chars = 'qwertyuopasdfghjklizxcvbnm0123456789'
   const hash = new Array(11)
     .fill(0)
@@ -28,12 +60,12 @@ export function generateHash() {
     .join('')
 
   return {
-    fn_index: 2,
+    fn_index,
     session_hash: hash,
   }
 }
 
-function parseResults(data: string[]) {
+export function parseResults(data: string[]) {
   // Strip metadata from base64 strings
   const rawImages = data.map((image) => image.split(',')[1])
   return rawImages.map((image) => Buffer.from(image, 'base64'))
@@ -58,7 +90,7 @@ export async function generateStableDiffusionImage(
     })
 
     client.on('message', (message) => {
-      const data = JSON.parse('' + message) as StableDiffusionImageResponse
+      const data = JSON.parse('' + message) as StableDiffusionMsg
 
       switch (data.msg) {
         case 'send_hash':
@@ -73,10 +105,11 @@ export async function generateStableDiffusionImage(
           break
         case 'process_completed':
           clearTimeout(timeout)
-          if (!data || !data.output || !data.output.data) {
+          if ('error' in data.output) {
             reject(new Error('No data returned from API'))
             return
           }
+
           const results: string[] = data.output.data[0]
           resolve({
             duration: data.output.duration,

@@ -12,15 +12,23 @@ if (!authJson.clearanceToken || !authJson.sessionToken) {
 export async function getChatGPTResponse(
   guildId: string | null,
   memberId: string | null,
-  prompt: string
+  prompt: string,
+  newConversation: boolean
 ): Promise<ChatResponse> {
-  return await post<ChatResponse>('http://localhost:3000/chatgpt', {
-    body: JSON.stringify({
-      guildId,
-      memberId,
-      prompt,
-    }),
-  })
+  console.log('Sending request to chatgpt:', prompt)
+  try {
+    return await post<ChatResponse>('http://localhost:3000/chatgpt', {
+      body: JSON.stringify({
+        guildId,
+        memberId,
+        newConversation,
+        prompt,
+      }),
+    })
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
 }
 // export async function getChatGPTResponse(
 //   memberId: string,

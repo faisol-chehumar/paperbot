@@ -14,6 +14,7 @@ const sd: CommandInterface = {
         .setRequired(true)
     ),
   async onExecute(interaction) {
+    console.log('Dreaming up SDv1 image for', interaction.user.username)
     const prompt = interaction.options.getString('prompt', true)
 
     await interaction.deferReply()
