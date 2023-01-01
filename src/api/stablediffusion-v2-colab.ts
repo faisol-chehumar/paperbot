@@ -1,5 +1,5 @@
 import { components } from '../types/openapi.js'
-import { get, post } from '../utils/get.js'
+import { post } from '../utils/get.js'
 import { generateHash } from './stablediffusion.js'
 
 export type StableDiffusionV2PostParameters =
@@ -57,7 +57,8 @@ export async function generateStableDiffusionV2Images(
   try {
     const response = await post<StableDiffusionV2ImageResults>(
       // 'https://492341fce9ce0a02.gradio.app/sdapi/v1/txt2img',
-      'https://paperfeed.loca.lt/sdapi/v1/txt2img',
+      // 'https://paperfeed.loca.lt/sdapi/v1/txt2img',
+      'http://127.0.0.1:7860/sdapi/v1/txt2img',
       {
         body: JSON.stringify({
           prompt,
@@ -85,8 +86,14 @@ export async function generateStableDiffusionV2Images(
       images,
       seed: response.parameters.seed,
     }
-  } catch (e) {
-    console.log(e)
-    throw new Error('Failed to generate Stable Diffusion V2 image')
+  } catch (error) {
+    if (error instanceof TypeError) {
+      console.log(error)
+      throw new Error(
+        'Stable Diffusion is offline, beg master daddy to turn the server on.'
+      )
+    } else {
+      throw error
+    }
   }
 }

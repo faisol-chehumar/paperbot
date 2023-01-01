@@ -72,6 +72,13 @@ const wokePrompt =
 fastify.post(
   '/chatgpt',
   async (request: FastifyRequest, reply: FastifyReply) => {
+    const isAuthenticated = await chatgptAPI.getIsAuthenticated()
+
+    if (!isAuthenticated) {
+      console.log('ChatGPT not authenticated, reinitializing session')
+      await chatgptAPI.initSession()
+    }
+
     const { guildId, memberId, newConversation, prompt } = request.body as {
       guildId: string
       memberId: string | undefined

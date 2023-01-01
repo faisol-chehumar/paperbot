@@ -36,10 +36,19 @@ interface MindfulData {
   mp3: string
 }
 
+let sessionId = await (
+  await fetch('https://inspirobot.me/api?getSesssionID=1')
+).text()
+
 const meditate: CommandInterface = {
   data: new SlashCommandBuilder()
     .setName('meditate')
-    .setDescription('Be a meditating cunt'),
+    .setDescription('Be a meditating cunt')
+    .addBooleanOption((option) =>
+      option
+        .setName('new-session')
+        .setDescription('Create a new meditation session, cunt')
+    ),
   async onButton(interaction) {
     const [action, sessionId] = interaction.customId.split('-')
 
@@ -55,6 +64,7 @@ const meditate: CommandInterface = {
   },
   async onExecute(interaction) {
     console.log('Meditating this cunt', interaction.user.username)
+    const newSession = interaction.options.getBoolean('new-session')
     const voiceChannel = getVoiceChannelOfInteraction(interaction)
 
     if (!voiceChannel) {
@@ -67,10 +77,13 @@ const meditate: CommandInterface = {
     }
 
     await interaction.deferReply()
+
     try {
-      const sessionId = await (
-        await fetch('https://inspirobot.me/api?getSesssionID=1')
-      ).text()
+      if (!sessionId || newSession) {
+        sessionId = await (
+          await fetch('https://inspirobot.me/api?getSesssionID=1')
+        ).text()
+      }
       const mindfulData = await get<MindfulData>(
         `https://inspirobot.me/api?generateFlow=1&sessionID=${sessionId}`
       )

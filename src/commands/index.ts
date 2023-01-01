@@ -90,11 +90,11 @@ export async function initializeCommandHandler() {
 
         await command.onExecute(interaction)
       } catch (error) {
-        console.error(error)
+        console.error(
+          `An error occurred running command ${interaction.commandName} for ${interaction.user.username}\nDetails: ${error}\n`
+        )
         const response = {
-          content: `Something went wrong running the command ${
-            interaction.commandName
-          }:\n${typeof error === 'object' ? JSON.stringify(error) : error}`,
+          content: `Something went wrong running the command ${interaction.commandName}:\n${error}`,
           ephemeral: true,
         }
 

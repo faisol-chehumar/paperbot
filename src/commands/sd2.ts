@@ -33,6 +33,7 @@ const sd2: CommandInterface = {
     const cfgScale = interaction.options.getInteger('cfg') ?? undefined
 
     await interaction.reply('Dreaming up image...')
+
     const { duration, hash, images } = await generateStableDiffusionV2Image(
       prompt,
       negativePrompt,

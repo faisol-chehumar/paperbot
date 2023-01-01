@@ -17,10 +17,12 @@ function clearUndefinedFromObject<T extends object = object>(
   }, {} as Record<string, any>)
 }
 
-const sd2colab: CommandInterface = {
+const diffuse: CommandInterface = {
   data: new SlashCommandBuilder()
-    .setName('sd2colab')
-    .setDescription('Dream up an image in Google Colab - Usually unavailable')
+    .setName('diffuse')
+    .setDescription(
+      "Dream up an image, runs locally on master daddy's computer uwu"
+    )
     .addStringOption((option) =>
       option
         .setName('prompt')
@@ -68,7 +70,7 @@ const sd2colab: CommandInterface = {
       interaction.options.getString('negative-prompt') ?? undefined
     const width = interaction.options.getInteger('width') ?? 768
     const height = interaction.options.getInteger('height') ?? 768
-    const batch_size = interaction.options.getInteger('images') ?? 3
+    const batch_size = interaction.options.getInteger('images') ?? 1
     const steps = interaction.options.getInteger('steps') ?? 50
     const seed = interaction.options.getInteger('seed') ?? -1
     const cfg_scale = interaction.options.getInteger('cfg') ?? 7
@@ -116,4 +118,4 @@ const sd2colab: CommandInterface = {
   },
 }
 
-export default sd2colab
+export default diffuse
