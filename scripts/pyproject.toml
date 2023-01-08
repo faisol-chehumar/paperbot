@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "magic-prompt"
+version = "0.1.0"
+description = ""
+authors = ["Aldert Vaandering <paperfeed@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "magic-prompt.py" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+transformers = {extras = ["sentencepiece"], version = "^4.25.1"}
+torch = "^1.13.1"
+gradio = "^3.16.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+magic-prompt = "magic-prompt:main"
