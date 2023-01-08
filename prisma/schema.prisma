@@ -16,3 +16,19 @@ model Conversation {
   memberId  String?
   parentMessageId String
 }
+
+model Image {
+  id        String @id @default(cuid())
+  guildId   String?
+  memberId  String
+  image     String
+  width     Int @default(512)
+  height    Int @default(512)
+}
+
+model SDConfig {
+  id        String @id @default(cuid())
+  guildId   String?
+  memberId  String
+  config    String @default("{}")
+}
