@@ -1,6 +1,6 @@
 import { AttachmentBuilder, SlashCommandBuilder } from 'discord.js'
 
-import { generateStableDiffusionV2Image } from '../api/stablediffusion-v2.js'
+import { generateStableDiffusionV21Image } from '../api/huggingface.js'
 import { CommandInterface } from './index.js'
 
 const sd2: CommandInterface = {
@@ -34,7 +34,7 @@ const sd2: CommandInterface = {
 
     await interaction.reply('Dreaming up image...')
 
-    const { duration, hash, images } = await generateStableDiffusionV2Image(
+    const { duration, hash, images } = await generateStableDiffusionV21Image(
       prompt,
       negativePrompt,
       cfgScale,

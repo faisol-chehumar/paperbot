@@ -1,6 +1,6 @@
 import { AttachmentBuilder, SlashCommandBuilder } from 'discord.js'
 
-import { generateStableDiffusionImage } from '../api/stablediffusion.js'
+import { generateStableDiffusionV15Image } from '../api/huggingface.js'
 import { CommandInterface } from './index.js'
 
 const sd: CommandInterface = {
@@ -18,8 +18,10 @@ const sd: CommandInterface = {
     const prompt = interaction.options.getString('prompt', true)
 
     await interaction.deferReply()
-    const { duration, hash, images } = await generateStableDiffusionImage(
-      prompt
+    const { duration, hash, images } = await generateStableDiffusionV15Image(
+      prompt,
+      (queue, total) =>
+        interaction.editReply(`Queued as nr \`${queue}\` out of \`${total}\``)
     )
 
     const attachments = images.map(

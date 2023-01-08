@@ -1,122 +1,163 @@
-import WebSocket from 'ws'
+import { prisma } from '../main.js'
+import { components } from '../types/openapi.js'
+import { post } from '../utils/get.js'
+import { generateHash } from './huggingface.js'
 
-const API_URL = 'wss://runwayml-stable-diffusion-v1-5.hf.space/queue/join'
+export type StableDiffusionPostParameters =
+  components['schemas']['StableDiffusionProcessingTxt2Img']
+export type StableDiffusionImage2ImagePostParameters =
+  components['schemas']['StableDiffusionProcessingImg2Img']
 
-interface StableDiffusionImageResults {
-  images: Buffer[]
-  hash: string
-  duration: number
+type StableDiffusionImageResults = components['schemas']['TextToImageResponse']
+
+type StableDiffusionImage2ImageResults =
+  components['schemas']['ImageToImageResponse']
+
+export type StableDiffusionOptions = components['schemas']['Options']
+
+interface PromptInfo {
+  prompt: string
+  all_prompts: string[]
+  negative_prompt: string
+  all_negative_prompts: string[]
+  seed: number
+  all_seeds: number[]
+  subseed: number
+  all_subseeds: number[]
+  subseed_strenght: number
+  width: number
+  height: number
+  sampler_name: string
+  cfg_scale: number
+  steps: number
+  batch_size: number
+  restore_faces: boolean
+  face_restoration_model: string | null
+  sd_model_hash: string
+  seed_resize_from_w: number
+  seed_resize_from_h: number
+  denoising_strength: number
+  extra_generation_params: Record<string, string | number>
+  index_of_first_image: number
+  infotexts: string[]
+  styles: string[]
+  job_timestamp: string
+  clip_skip: number
+  is_using_inpainting_conditioning: boolean
 }
 
-// Can be received after sending a hash
-export interface QueueMsg {
-  msg: 'estimation'
-  rank: number
-  rank_eta: number
-  avg_event_process_time: number
-  avg_event_concurrent_process_time: number
-  queue_eta: number
-  queue_size: number
-}
+// http://127.0.0.1:7860/docs
+// https://colab.research.google.com/drive/1QM80aCkk0psAVBr_CUgP1_4vfC6Ov3Ov
 
-export interface DataMsg {
-  fn_index: number //3
-  data: [string, string, number]
-  session_hash: string
-}
+export async function diffuseText2Image(
+  prompt: string,
+  opts: Partial<StableDiffusionPostParameters>
+) {
+  console.log(
+    `Generating new Stable Diffusion V2 image with prompt:\n${prompt}\nOptions: ${JSON.stringify(
+      opts
+    )}\n`
+  )
 
-interface TriggerMsg {
-  msg: 'send_hash' | 'send_data' | 'process_starts' | 'queue_full'
-}
+  const start = Date.now()
 
-interface ProcessCompletedMsg {
-  msg: 'process_completed'
-  output:
-    | {
-        average_duration: number
-        data: string[][]
-        duration: number
-        is_generating: boolean
+  try {
+    const response = await post<StableDiffusionImageResults>(
+      // 'https://492341fce9ce0a02.gradio.app/sdapi/v1/txt2img',
+      // 'https://paperfeed.loca.lt/sdapi/v1/txt2img',
+      'http://127.0.0.1:7860/sdapi/v1/txt2img',
+      {
+        body: JSON.stringify({
+          prompt,
+          ...opts,
+        } as StableDiffusionPostParameters),
       }
-    | {
-        error: string
-      }
-  success: boolean
-}
+    )
 
-export type StableDiffusionMsg = TriggerMsg | ProcessCompletedMsg | QueueMsg
+    if (!response) {
+      throw new Error('Something went wrong generating the image')
+    }
 
-// Should be sent after receiving 'send_hash'
-interface HashData {
-  session_hash: string
-  fn_index: number // 3
-}
+    const duration = (Date.now() - start) / 1000
 
-export function generateHash(fn_index = 2): HashData {
-  const chars = 'qwertyuopasdfghjklizxcvbnm0123456789'
-  const hash = new Array(11)
-    .fill(0)
-    .map(() => chars[Math.floor(Math.random() * chars.length)])
-    .join('')
+    const images =
+      response.images?.map((image) => Buffer.from(image, 'base64')) ?? []
 
-  return {
-    fn_index,
-    session_hash: hash,
+    const info = JSON.parse(response.info) as PromptInfo
+
+    console.log(
+      `Generated ${images.length} Stable Diffusion V2 image(s) in ${duration}s`
+    )
+
+    return {
+      duration,
+      hash: generateHash(),
+      images,
+      info,
+      seed: info.seed,
+    }
+  } catch (error) {
+    if (error instanceof TypeError) {
+      console.log(error)
+      throw new Error(
+        'Stable Diffusion is offline, beg master daddy to turn the server on.'
+      )
+    } else {
+      throw error
+    }
   }
 }
 
-export function parseResults(data: string[]) {
-  // Strip metadata from base64 strings
-  const rawImages = data.map((image) => image.split(',')[1])
-  return rawImages.map((image) => Buffer.from(image, 'base64'))
-}
+export async function diffuseImage2Image(
+  image: string,
+  prompt: string,
+  opts: Partial<StableDiffusionPostParameters>
+) {
+  console.log(
+    `Generating Stable Diffusion image2image with prompt:\n${prompt}\nOptions: ${JSON.stringify(
+      opts
+    )}\n`
+  )
+  const start = Date.now()
 
-export async function generateStableDiffusionImage(
-  prompt: string
-): Promise<StableDiffusionImageResults> {
-  const client = new WebSocket(API_URL)
-  const hash = generateHash()
-
-  console.log(`Generating new Stable Diffusion image with prompt: ${prompt}`)
-
-  return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      client.close()
-      reject(new Error('Timed out while generating an image'))
-    }, 120000)
-
-    client.on('error', (error) => {
-      reject(error)
-    })
-
-    client.on('message', (message) => {
-      const data = JSON.parse('' + message) as StableDiffusionMsg
-
-      switch (data.msg) {
-        case 'send_hash':
-          client.send(JSON.stringify(hash))
-          break
-        case 'send_data':
-          const sendData = {
-            data: [prompt],
-            ...hash,
-          }
-          client.send(JSON.stringify(sendData))
-          break
-        case 'process_completed':
-          clearTimeout(timeout)
-          if ('error' in data.output) {
-            reject(new Error('No data returned from API'))
-            return
-          }
-
-          const results: string[] = data.output.data[0]
-          resolve({
-            duration: data.output.duration,
-            hash: hash.session_hash,
-            images: parseResults(results),
-          })
+  try {
+    const response = await post<StableDiffusionImage2ImageResults>(
+      'http://127.0.0.1:7860/sdapi/v1/img2img',
+      {
+        body: JSON.stringify({
+          init_images: [image],
+          prompt,
+          ...opts,
+        } as StableDiffusionImage2ImagePostParameters),
       }
-    })
-  })
+    )
+
+    const duration = (Date.now() - start) / 1000
+
+    const images =
+      response.images?.map((image) => Buffer.from(image, 'base64')) ?? []
+
+    const info = JSON.parse(response.info) as PromptInfo
+
+    console.log(
+      `Generated ${images.length} Stable Diffusion V2 image(s) in ${duration}s`
+    )
+
+    return {
+      duration,
+      hash: generateHash(),
+      images,
+      info,
+      seed: info.seed,
+    }
+  } catch (error) {
+    if (error instanceof TypeError) {
+      console.log(error)
+      throw new Error(
+        'Stable Diffusion is offline, beg master daddy to turn the server on.'
+      )
+    } else {
+      throw error
+    }
+  }
 }

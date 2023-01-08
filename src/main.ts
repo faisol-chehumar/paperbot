@@ -1,19 +1,19 @@
-import { Client, Events, GatewayIntentBits } from 'discord.js'
+import { PrismaClient } from '@prisma/client'
+import { Client, Events, GatewayIntentBits, Partials } from 'discord.js'
 import dotenv from 'dotenv'
-import { watch } from 'fs'
-import * as path from 'path'
 import * as process from 'process'
-import * as url from 'url'
-
-// const __filename = url.fileURLToPath(import.meta.url);
-export const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 import {
   initializeCommandHandler,
   loadCommandFiles,
   messageHandler,
+  reactionHandler,
 } from './commands/index.js'
-import { post } from './utils/get.js'
+import { getRawEventMessage, RawEvent } from './utils/rawEvent.js'
+
+// const __filename = url.fileURLToPath(import.meta.url);
+// export const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+// const appRoot = path.join(path.resolve(__dirname), '../')
 
 dotenv.config()
 
@@ -24,11 +24,12 @@ const intents = [
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildVoiceStates,
   GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.GuildMessageReactions,
+  GatewayIntentBits.MessageContent,
 ]
 
-const appRoot = path.join(path.resolve(__dirname), '../')
-
 export let discordClient: Client
+export const prisma = new PrismaClient()
 
 async function onReady(client: Client) {
   try {
@@ -38,14 +39,50 @@ async function onReady(client: Client) {
   }
 }
 
+async function handleRawEvent(event: RawEvent) {
+  // console.log('Received raw event\n', event)
+  const { message } = await getRawEventMessage(event)
+
+  if (
+    !message ||
+    message.author.username !== 'Paperbot' ||
+    !message.content.includes('I have generated')
+  ) {
+    return
+  }
+
+  switch (event.t) {
+    case 'MESSAGE_REACTION_ADD':
+      const emojis = message.reactions.resolve('💯')
+
+      if (emojis && emojis.count > 1) {
+        try {
+          message.pin()
+        } catch (e) {
+          console.error('Could not pin message', e)
+        }
+      }
+      return
+    case 'MESSAGE_REACTION_REMOVE':
+      console.log('reaction removed', message)
+      return
+  }
+}
+
 async function initializeBot() {
   try {
-    discordClient = new Client({ intents })
+    discordClient = new Client({
+      intents,
+      partials: [Partials.Message, Partials.Reaction],
+    })
     await loadCommandFiles()
     const commandHandler = await initializeCommandHandler()
 
     discordClient.on(Events.InteractionCreate, commandHandler)
     discordClient.on(Events.MessageCreate, messageHandler)
+    discordClient.on(Events.MessageReactionAdd, reactionHandler)
+    discordClient.on(Events.MessageReactionRemove, reactionHandler)
+    // discordClient.on(Events.Raw, handleRawEvent)
     discordClient.once(Events.ClientReady, onReady)
 
     await discordClient.login(DISCORD_BOT_TOKEN)

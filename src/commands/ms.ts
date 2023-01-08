@@ -1,10 +1,6 @@
 import { AttachmentBuilder, SlashCommandBuilder } from 'discord.js'
 
 import { generateMageSpaceImage, MageSpaceOptions } from '../api/magespace.js'
-import {
-  generateStableDiffusionV2Images,
-  StableDiffusionV2PostParameters,
-} from '../api/stablediffusion-v2.js'
 import { CommandInterface } from './index.js'
 
 function clearUndefinedFromObject<T extends object = object>(

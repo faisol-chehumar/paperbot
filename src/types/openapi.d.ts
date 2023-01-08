@@ -3,2995 +3,2993 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/user/": {
+  '/user/': {
     /** Get Current User */
-    get: operations["get_current_user_user__get"];
-  };
-  "/user": {
+    get: operations['get_current_user_user__get']
+  }
+  '/user': {
     /** Get Current User */
-    get: operations["get_current_user_user_get"];
-  };
-  "/login_check/": {
+    get: operations['get_current_user_user_get']
+  }
+  '/login_check/': {
     /** Login Check */
-    get: operations["login_check_login_check__get"];
-  };
-  "/login_check": {
+    get: operations['login_check_login_check__get']
+  }
+  '/login_check': {
     /** Login Check */
-    get: operations["login_check_login_check_get"];
-  };
-  "/token/": {
+    get: operations['login_check_login_check_get']
+  }
+  '/token/': {
     /** Get Token */
-    get: operations["get_token_token__get"];
-  };
-  "/token": {
+    get: operations['get_token_token__get']
+  }
+  '/token': {
     /** Get Token */
-    get: operations["get_token_token_get"];
-  };
-  "/app_id/": {
+    get: operations['get_token_token_get']
+  }
+  '/app_id/': {
     /** App Id */
-    get: operations["app_id_app_id__get"];
-  };
-  "/app_id": {
+    get: operations['app_id_app_id__get']
+  }
+  '/app_id': {
     /** App Id */
-    get: operations["app_id_app_id_get"];
-  };
-  "/login/": {
+    get: operations['app_id_app_id_get']
+  }
+  '/login/': {
     /** Login */
-    post: operations["login_login__post"];
-  };
-  "/login": {
+    post: operations['login_login__post']
+  }
+  '/login': {
     /** Login */
-    post: operations["login_login_post"];
-  };
-  "/": {
+    post: operations['login_login_post']
+  }
+  '/': {
     /** Main */
-    get: operations["main__get"];
+    get: operations['main__get']
     /** Main */
-    head: operations["main__head"];
-  };
-  "/config": {
+    head: operations['main__head']
+  }
+  '/config': {
     /** Get Config */
-    get: operations["get_config_config_get"];
-  };
-  "/config/": {
+    get: operations['get_config_config_get']
+  }
+  '/config/': {
     /** Get Config */
-    get: operations["get_config_config__get"];
-  };
-  "/static/{path}": {
+    get: operations['get_config_config__get']
+  }
+  '/static/{path}': {
     /** Static Resource */
-    get: operations["static_resource_static__path__get"];
-  };
-  "/assets/{path}": {
+    get: operations['static_resource_static__path__get']
+  }
+  '/assets/{path}': {
     /** Build Resource */
-    get: operations["build_resource_assets__path__get"];
-  };
-  "/favicon.ico": {
+    get: operations['build_resource_assets__path__get']
+  }
+  '/favicon.ico': {
     /** Favicon */
-    get: operations["favicon_favicon_ico_get"];
-  };
-  "/file={path}": {
+    get: operations['favicon_favicon_ico_get']
+  }
+  '/file={path}': {
     /** File */
-    get: operations["file_file__path__get"];
-  };
-  "/file/{path}": {
+    get: operations['file_file__path__get']
+  }
+  '/file/{path}': {
     /** File Deprecated */
-    get: operations["file_deprecated_file__path__get"];
-  };
-  "/reset": {
+    get: operations['file_deprecated_file__path__get']
+  }
+  '/reset': {
     /** Reset Iterator */
-    post: operations["reset_iterator_reset_post"];
-  };
-  "/reset/": {
+    post: operations['reset_iterator_reset_post']
+  }
+  '/reset/': {
     /** Reset Iterator */
-    post: operations["reset_iterator_reset__post"];
-  };
-  "/api/{api_name}/": {
+    post: operations['reset_iterator_reset__post']
+  }
+  '/api/{api_name}/': {
     /** Predict */
-    post: operations["predict_api__api_name___post"];
-  };
-  "/api/{api_name}": {
+    post: operations['predict_api__api_name___post']
+  }
+  '/api/{api_name}': {
     /** Predict */
-    post: operations["predict_api__api_name__post"];
-  };
-  "/run/{api_name}/": {
+    post: operations['predict_api__api_name__post']
+  }
+  '/run/{api_name}/': {
     /** Predict */
-    post: operations["predict_run__api_name___post"];
-  };
-  "/run/{api_name}": {
+    post: operations['predict_run__api_name___post']
+  }
+  '/run/{api_name}': {
     /** Predict */
-    post: operations["predict_run__api_name__post"];
-  };
-  "/queue/status": {
+    post: operations['predict_run__api_name__post']
+  }
+  '/queue/status': {
     /** Get Queue Status */
-    get: operations["get_queue_status_queue_status_get"];
-  };
-  "/startup-events": {
+    get: operations['get_queue_status_queue_status_get']
+  }
+  '/startup-events': {
     /** Startup Events */
-    get: operations["startup_events_startup_events_get"];
-  };
-  "/sdapi/v1/txt2img": {
+    get: operations['startup_events_startup_events_get']
+  }
+  '/sdapi/v1/txt2img': {
     /** Text2Imgapi */
-    post: operations["text2imgapi_sdapi_v1_txt2img_post"];
-  };
-  "/sdapi/v1/img2img": {
+    post: operations['text2imgapi_sdapi_v1_txt2img_post']
+  }
+  '/sdapi/v1/img2img': {
     /** Img2Imgapi */
-    post: operations["img2imgapi_sdapi_v1_img2img_post"];
-  };
-  "/sdapi/v1/extra-single-image": {
+    post: operations['img2imgapi_sdapi_v1_img2img_post']
+  }
+  '/sdapi/v1/extra-single-image': {
     /** Extras Single Image Api */
-    post: operations["extras_single_image_api_sdapi_v1_extra_single_image_post"];
-  };
-  "/sdapi/v1/extra-batch-images": {
+    post: operations['extras_single_image_api_sdapi_v1_extra_single_image_post']
+  }
+  '/sdapi/v1/extra-batch-images': {
     /** Extras Batch Images Api */
-    post: operations["extras_batch_images_api_sdapi_v1_extra_batch_images_post"];
-  };
-  "/sdapi/v1/png-info": {
+    post: operations['extras_batch_images_api_sdapi_v1_extra_batch_images_post']
+  }
+  '/sdapi/v1/png-info': {
     /** Pnginfoapi */
-    post: operations["pnginfoapi_sdapi_v1_png_info_post"];
-  };
-  "/sdapi/v1/progress": {
+    post: operations['pnginfoapi_sdapi_v1_png_info_post']
+  }
+  '/sdapi/v1/progress': {
     /** Progressapi */
-    get: operations["progressapi_sdapi_v1_progress_get"];
-  };
-  "/sdapi/v1/interrogate": {
+    get: operations['progressapi_sdapi_v1_progress_get']
+  }
+  '/sdapi/v1/interrogate': {
     /** Interrogateapi */
-    post: operations["interrogateapi_sdapi_v1_interrogate_post"];
-  };
-  "/sdapi/v1/interrupt": {
+    post: operations['interrogateapi_sdapi_v1_interrogate_post']
+  }
+  '/sdapi/v1/interrupt': {
     /** Interruptapi */
-    post: operations["interruptapi_sdapi_v1_interrupt_post"];
-  };
-  "/sdapi/v1/skip": {
+    post: operations['interruptapi_sdapi_v1_interrupt_post']
+  }
+  '/sdapi/v1/skip': {
     /** Skip */
-    post: operations["skip_sdapi_v1_skip_post"];
-  };
-  "/sdapi/v1/options": {
+    post: operations['skip_sdapi_v1_skip_post']
+  }
+  '/sdapi/v1/options': {
     /** Get Config */
-    get: operations["get_config_sdapi_v1_options_get"];
+    get: operations['get_config_sdapi_v1_options_get']
     /** Set Config */
-    post: operations["set_config_sdapi_v1_options_post"];
-  };
-  "/sdapi/v1/cmd-flags": {
+    post: operations['set_config_sdapi_v1_options_post']
+  }
+  '/sdapi/v1/cmd-flags': {
     /** Get Cmd Flags */
-    get: operations["get_cmd_flags_sdapi_v1_cmd_flags_get"];
-  };
-  "/sdapi/v1/samplers": {
+    get: operations['get_cmd_flags_sdapi_v1_cmd_flags_get']
+  }
+  '/sdapi/v1/samplers': {
     /** Get Samplers */
-    get: operations["get_samplers_sdapi_v1_samplers_get"];
-  };
-  "/sdapi/v1/upscalers": {
+    get: operations['get_samplers_sdapi_v1_samplers_get']
+  }
+  '/sdapi/v1/upscalers': {
     /** Get Upscalers */
-    get: operations["get_upscalers_sdapi_v1_upscalers_get"];
-  };
-  "/sdapi/v1/sd-models": {
+    get: operations['get_upscalers_sdapi_v1_upscalers_get']
+  }
+  '/sdapi/v1/sd-models': {
     /** Get Sd Models */
-    get: operations["get_sd_models_sdapi_v1_sd_models_get"];
-  };
-  "/sdapi/v1/hypernetworks": {
+    get: operations['get_sd_models_sdapi_v1_sd_models_get']
+  }
+  '/sdapi/v1/hypernetworks': {
     /** Get Hypernetworks */
-    get: operations["get_hypernetworks_sdapi_v1_hypernetworks_get"];
-  };
-  "/sdapi/v1/face-restorers": {
+    get: operations['get_hypernetworks_sdapi_v1_hypernetworks_get']
+  }
+  '/sdapi/v1/face-restorers': {
     /** Get Face Restorers */
-    get: operations["get_face_restorers_sdapi_v1_face_restorers_get"];
-  };
-  "/sdapi/v1/realesrgan-models": {
+    get: operations['get_face_restorers_sdapi_v1_face_restorers_get']
+  }
+  '/sdapi/v1/realesrgan-models': {
     /** Get Realesrgan Models */
-    get: operations["get_realesrgan_models_sdapi_v1_realesrgan_models_get"];
-  };
-  "/sdapi/v1/prompt-styles": {
+    get: operations['get_realesrgan_models_sdapi_v1_realesrgan_models_get']
+  }
+  '/sdapi/v1/prompt-styles': {
     /** Get Prompt Styles */
-    get: operations["get_prompt_styles_sdapi_v1_prompt_styles_get"];
-  };
-  "/sdapi/v1/artist-categories": {
+    get: operations['get_prompt_styles_sdapi_v1_prompt_styles_get']
+  }
+  '/sdapi/v1/artist-categories': {
     /** Get Artists Categories */
-    get: operations["get_artists_categories_sdapi_v1_artist_categories_get"];
-  };
-  "/sdapi/v1/artists": {
+    get: operations['get_artists_categories_sdapi_v1_artist_categories_get']
+  }
+  '/sdapi/v1/artists': {
     /** Get Artists */
-    get: operations["get_artists_sdapi_v1_artists_get"];
-  };
-  "/sdapi/v1/refresh-checkpoints": {
+    get: operations['get_artists_sdapi_v1_artists_get']
+  }
+  '/sdapi/v1/refresh-checkpoints': {
     /** Refresh Checkpoints */
-    post: operations["refresh_checkpoints_sdapi_v1_refresh_checkpoints_post"];
-  };
-  "/sdapi/v1/create/embedding": {
+    post: operations['refresh_checkpoints_sdapi_v1_refresh_checkpoints_post']
+  }
+  '/sdapi/v1/create/embedding': {
     /** Create Embedding */
-    post: operations["create_embedding_sdapi_v1_create_embedding_post"];
-  };
-  "/sdapi/v1/create/hypernetwork": {
+    post: operations['create_embedding_sdapi_v1_create_embedding_post']
+  }
+  '/sdapi/v1/create/hypernetwork': {
     /** Create Hypernetwork */
-    post: operations["create_hypernetwork_sdapi_v1_create_hypernetwork_post"];
-  };
-  "/sdapi/v1/preprocess": {
+    post: operations['create_hypernetwork_sdapi_v1_create_hypernetwork_post']
+  }
+  '/sdapi/v1/preprocess': {
     /** Preprocess */
-    post: operations["preprocess_sdapi_v1_preprocess_post"];
-  };
-  "/sdapi/v1/train/embedding": {
+    post: operations['preprocess_sdapi_v1_preprocess_post']
+  }
+  '/sdapi/v1/train/embedding': {
     /** Train Embedding */
-    post: operations["train_embedding_sdapi_v1_train_embedding_post"];
-  };
-  "/sdapi/v1/train/hypernetwork": {
+    post: operations['train_embedding_sdapi_v1_train_embedding_post']
+  }
+  '/sdapi/v1/train/hypernetwork': {
     /** Train Hypernetwork */
-    post: operations["train_hypernetwork_sdapi_v1_train_hypernetwork_post"];
-  };
+    post: operations['train_hypernetwork_sdapi_v1_train_hypernetwork_post']
+  }
 }
 
-export type webhooks = Record<string, never>;
+export type webhooks = Record<string, never>
 
 export interface components {
   schemas: {
     /** ArtistItem */
     ArtistItem: {
       /** Name */
-      name: string;
+      name: string
       /** Score */
-      score: number;
+      score: number
       /** Category */
-      category: string;
-    };
+      category: string
+    }
     /** Body_login_login__post */
     Body_login_login__post: {
       /** Grant Type */
-      grant_type?: string;
+      grant_type?: string
       /** Username */
-      username: string;
+      username: string
       /** Password */
-      password: string;
+      password: string
       /**
-       * Scope 
+       * Scope
        * @default
        */
-      scope?: string;
+      scope?: string
       /** Client Id */
-      client_id?: string;
+      client_id?: string
       /** Client Secret */
-      client_secret?: string;
-    };
+      client_secret?: string
+    }
     /** Body_login_login_post */
     Body_login_login_post: {
       /** Grant Type */
-      grant_type?: string;
+      grant_type?: string
       /** Username */
-      username: string;
+      username: string
       /** Password */
-      password: string;
+      password: string
       /**
-       * Scope 
+       * Scope
        * @default
        */
-      scope?: string;
+      scope?: string
       /** Client Id */
-      client_id?: string;
+      client_id?: string
       /** Client Secret */
-      client_secret?: string;
-    };
+      client_secret?: string
+    }
     /** CreateResponse */
     CreateResponse: {
       /**
-       * Create info 
+       * Create info
        * @description Response string from create embedding or hypernetwork task.
        */
-      info: string;
-    };
+      info: string
+    }
     /** Estimation */
     Estimation: {
       /**
-       * Msg 
+       * Msg
        * @default estimation
        */
-      msg?: string;
+      msg?: string
       /** Rank */
-      rank?: number;
+      rank?: number
       /** Queue Size */
-      queue_size: number;
+      queue_size: number
       /** Avg Event Process Time */
-      avg_event_process_time?: number;
+      avg_event_process_time?: number
       /** Avg Event Concurrent Process Time */
-      avg_event_concurrent_process_time?: number;
+      avg_event_concurrent_process_time?: number
       /** Rank Eta */
-      rank_eta?: number;
+      rank_eta?: number
       /** Queue Eta */
-      queue_eta: number;
-    };
+      queue_eta: number
+    }
     /** ExtrasBatchImagesRequest */
     ExtrasBatchImagesRequest: {
       /**
-       * Resize Mode 
-       * @description Sets the resize mode: 0 to upscale by upscaling_resize amount, 1 to upscale up to upscaling_resize_h x upscaling_resize_w. 
-       * @default 0 
+       * Resize Mode
+       * @description Sets the resize mode: 0 to upscale by upscaling_resize amount, 1 to upscale up to upscaling_resize_h x upscaling_resize_w.
+       * @default 0
        * @enum {integer}
        */
-      resize_mode?: 0 | 1;
+      resize_mode?: 0 | 1
       /**
-       * Show results 
-       * @description Should the backend return the generated image? 
+       * Show results
+       * @description Should the backend return the generated image?
        * @default true
        */
-      show_extras_results?: boolean;
+      show_extras_results?: boolean
       /**
-       * GFPGAN Visibility 
-       * @description Sets the visibility of GFPGAN, values should be between 0 and 1. 
+       * GFPGAN Visibility
+       * @description Sets the visibility of GFPGAN, values should be between 0 and 1.
        * @default 0
        */
-      gfpgan_visibility?: number;
+      gfpgan_visibility?: number
       /**
-       * CodeFormer Visibility 
-       * @description Sets the visibility of CodeFormer, values should be between 0 and 1. 
+       * CodeFormer Visibility
+       * @description Sets the visibility of CodeFormer, values should be between 0 and 1.
        * @default 0
        */
-      codeformer_visibility?: number;
+      codeformer_visibility?: number
       /**
-       * CodeFormer Weight 
-       * @description Sets the weight of CodeFormer, values should be between 0 and 1. 
+       * CodeFormer Weight
+       * @description Sets the weight of CodeFormer, values should be between 0 and 1.
        * @default 0
        */
-      codeformer_weight?: number;
+      codeformer_weight?: number
       /**
-       * Upscaling Factor 
-       * @description By how much to upscale the image, only used when resize_mode=0. 
+       * Upscaling Factor
+       * @description By how much to upscale the image, only used when resize_mode=0.
        * @default 2
        */
-      upscaling_resize?: number;
+      upscaling_resize?: number
       /**
-       * Target Width 
-       * @description Target width for the upscaler to hit. Only used when resize_mode=1. 
+       * Target Width
+       * @description Target width for the upscaler to hit. Only used when resize_mode=1.
        * @default 512
        */
-      upscaling_resize_w?: number;
+      upscaling_resize_w?: number
       /**
-       * Target Height 
-       * @description Target height for the upscaler to hit. Only used when resize_mode=1. 
+       * Target Height
+       * @description Target height for the upscaler to hit. Only used when resize_mode=1.
        * @default 512
        */
-      upscaling_resize_h?: number;
+      upscaling_resize_h?: number
       /**
-       * Crop to fit 
-       * @description Should the upscaler crop the image to fit in the chosen size? 
+       * Crop to fit
+       * @description Should the upscaler crop the image to fit in the chosen size?
        * @default true
        */
-      upscaling_crop?: boolean;
+      upscaling_crop?: boolean
       /**
-       * Main upscaler 
-       * @description The name of the main upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B 
+       * Main upscaler
+       * @description The name of the main upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B
        * @default None
        */
-      upscaler_1?: string;
+      upscaler_1?: string
       /**
-       * Secondary upscaler 
-       * @description The name of the secondary upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B 
+       * Secondary upscaler
+       * @description The name of the secondary upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B
        * @default None
        */
-      upscaler_2?: string;
+      upscaler_2?: string
       /**
-       * Secondary upscaler visibility 
-       * @description Sets the visibility of secondary upscaler, values should be between 0 and 1. 
+       * Secondary upscaler visibility
+       * @description Sets the visibility of secondary upscaler, values should be between 0 and 1.
        * @default 0
        */
-      extras_upscaler_2_visibility?: number;
+      extras_upscaler_2_visibility?: number
       /**
-       * Upscale first 
-       * @description Should the upscaler run before restoring faces? 
+       * Upscale first
+       * @description Should the upscaler run before restoring faces?
        * @default false
        */
-      upscale_first?: boolean;
+      upscale_first?: boolean
       /**
-       * Images 
+       * Images
        * @description List of images to work on. Must be Base64 strings
        */
-      imageList: (components["schemas"]["FileData"])[];
-    };
+      imageList: components['schemas']['FileData'][]
+    }
     /** ExtrasBatchImagesResponse */
     ExtrasBatchImagesResponse: {
       /**
-       * HTML info 
+       * HTML info
        * @description A series of HTML tags containing the process info.
        */
-      html_info: string;
+      html_info: string
       /**
-       * Images 
+       * Images
        * @description The generated images in base64 format.
        */
-      images: (string)[];
-    };
+      images: string[]
+    }
     /** ExtrasSingleImageRequest */
     ExtrasSingleImageRequest: {
       /**
-       * Resize Mode 
-       * @description Sets the resize mode: 0 to upscale by upscaling_resize amount, 1 to upscale up to upscaling_resize_h x upscaling_resize_w. 
-       * @default 0 
+       * Resize Mode
+       * @description Sets the resize mode: 0 to upscale by upscaling_resize amount, 1 to upscale up to upscaling_resize_h x upscaling_resize_w.
+       * @default 0
        * @enum {integer}
        */
-      resize_mode?: 0 | 1;
+      resize_mode?: 0 | 1
       /**
-       * Show results 
-       * @description Should the backend return the generated image? 
+       * Show results
+       * @description Should the backend return the generated image?
        * @default true
        */
-      show_extras_results?: boolean;
+      show_extras_results?: boolean
       /**
-       * GFPGAN Visibility 
-       * @description Sets the visibility of GFPGAN, values should be between 0 and 1. 
+       * GFPGAN Visibility
+       * @description Sets the visibility of GFPGAN, values should be between 0 and 1.
        * @default 0
        */
-      gfpgan_visibility?: number;
+      gfpgan_visibility?: number
       /**
-       * CodeFormer Visibility 
-       * @description Sets the visibility of CodeFormer, values should be between 0 and 1. 
+       * CodeFormer Visibility
+       * @description Sets the visibility of CodeFormer, values should be between 0 and 1.
        * @default 0
        */
-      codeformer_visibility?: number;
+      codeformer_visibility?: number
       /**
-       * CodeFormer Weight 
-       * @description Sets the weight of CodeFormer, values should be between 0 and 1. 
+       * CodeFormer Weight
+       * @description Sets the weight of CodeFormer, values should be between 0 and 1.
        * @default 0
        */
-      codeformer_weight?: number;
+      codeformer_weight?: number
       /**
-       * Upscaling Factor 
-       * @description By how much to upscale the image, only used when resize_mode=0. 
+       * Upscaling Factor
+       * @description By how much to upscale the image, only used when resize_mode=0.
        * @default 2
        */
-      upscaling_resize?: number;
+      upscaling_resize?: number
       /**
-       * Target Width 
-       * @description Target width for the upscaler to hit. Only used when resize_mode=1. 
+       * Target Width
+       * @description Target width for the upscaler to hit. Only used when resize_mode=1.
        * @default 512
        */
-      upscaling_resize_w?: number;
+      upscaling_resize_w?: number
       /**
-       * Target Height 
-       * @description Target height for the upscaler to hit. Only used when resize_mode=1. 
+       * Target Height
+       * @description Target height for the upscaler to hit. Only used when resize_mode=1.
        * @default 512
        */
-      upscaling_resize_h?: number;
+      upscaling_resize_h?: number
       /**
-       * Crop to fit 
-       * @description Should the upscaler crop the image to fit in the chosen size? 
+       * Crop to fit
+       * @description Should the upscaler crop the image to fit in the chosen size?
        * @default true
        */
-      upscaling_crop?: boolean;
+      upscaling_crop?: boolean
       /**
-       * Main upscaler 
-       * @description The name of the main upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B 
+       * Main upscaler
+       * @description The name of the main upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B
        * @default None
        */
-      upscaler_1?: string;
+      upscaler_1?: string
       /**
-       * Secondary upscaler 
-       * @description The name of the secondary upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B 
+       * Secondary upscaler
+       * @description The name of the secondary upscaler to use, it has to be one of this list: None , Lanczos , Nearest , LDSR , ScuNET GAN , ScuNET PSNR , SwinIR 4x , ESRGAN_4x , R-ESRGAN 4x+ , R-ESRGAN 4x+ Anime6B
        * @default None
        */
-      upscaler_2?: string;
+      upscaler_2?: string
       /**
-       * Secondary upscaler visibility 
-       * @description Sets the visibility of secondary upscaler, values should be between 0 and 1. 
+       * Secondary upscaler visibility
+       * @description Sets the visibility of secondary upscaler, values should be between 0 and 1.
        * @default 0
        */
-      extras_upscaler_2_visibility?: number;
+      extras_upscaler_2_visibility?: number
       /**
-       * Upscale first 
-       * @description Should the upscaler run before restoring faces? 
+       * Upscale first
+       * @description Should the upscaler run before restoring faces?
        * @default false
        */
-      upscale_first?: boolean;
+      upscale_first?: boolean
       /**
-       * Image 
-       * @description Image to work on, must be a Base64 string containing the image's data. 
+       * Image
+       * @description Image to work on, must be a Base64 string containing the image's data.
        * @default
        */
-      image?: string;
-    };
+      image?: string
+    }
     /** ExtrasSingleImageResponse */
     ExtrasSingleImageResponse: {
       /**
-       * HTML info 
+       * HTML info
        * @description A series of HTML tags containing the process info.
        */
-      html_info: string;
+      html_info: string
       /**
-       * Image 
+       * Image
        * @description The generated image in base64 format.
        */
-      image?: string;
-    };
+      image?: string
+    }
     /** FaceRestorerItem */
     FaceRestorerItem: {
       /** Name */
-      name: string;
+      name: string
       /** Path */
-      cmd_dir?: string;
-    };
+      cmd_dir?: string
+    }
     /** FileData */
     FileData: {
       /**
-       * File data 
+       * File data
        * @description Base64 representation of the file
        */
-      data: string;
+      data: string
       /** File name */
-      name: string;
-    };
+      name: string
+    }
     /** Flags */
     Flags: {
       /**
-       * Config 
-       * @description path to config which constructs model 
+       * Config
+       * @description path to config which constructs model
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/v1-inference.yaml
        */
-      config?: string;
+      config?: string
       /**
-       * Ckpt 
-       * @description path to checkpoint of stable diffusion model; if specified, this checkpoint will be added to the list of checkpoints and loaded 
+       * Ckpt
+       * @description path to checkpoint of stable diffusion model; if specified, this checkpoint will be added to the list of checkpoints and loaded
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/model.ckpt
        */
-      ckpt?: string;
+      ckpt?: string
       /**
-       * Ckpt Dir 
+       * Ckpt Dir
        * @description Path to directory with stable diffusion checkpoints
        */
-      ckpt_dir?: string;
+      ckpt_dir?: string
       /**
-       * Gfpgan Dir 
-       * @description GFPGAN directory 
+       * Gfpgan Dir
+       * @description GFPGAN directory
        * @default ./GFPGAN
        */
-      gfpgan_dir?: string;
+      gfpgan_dir?: string
       /**
-       * Gfpgan Model 
+       * Gfpgan Model
        * @description GFPGAN model file name
        */
-      gfpgan_model?: string;
+      gfpgan_model?: string
       /**
-       * No Half 
-       * @description do not switch the model to 16-bit floats 
+       * No Half
+       * @description do not switch the model to 16-bit floats
        * @default false
        */
-      no_half?: boolean;
+      no_half?: boolean
       /**
-       * No Half Vae 
-       * @description do not switch the VAE model to 16-bit floats 
+       * No Half Vae
+       * @description do not switch the VAE model to 16-bit floats
        * @default false
        */
-      no_half_vae?: boolean;
+      no_half_vae?: boolean
       /**
-       * No Progressbar Hiding 
-       * @description do not hide progressbar in gradio UI (we hide it because it slows down ML if you have hardware acceleration in browser) 
+       * No Progressbar Hiding
+       * @description do not hide progressbar in gradio UI (we hide it because it slows down ML if you have hardware acceleration in browser)
        * @default false
        */
-      no_progressbar_hiding?: boolean;
+      no_progressbar_hiding?: boolean
       /**
-       * Max Batch Count 
-       * @description maximum batch count value for the UI 
+       * Max Batch Count
+       * @description maximum batch count value for the UI
        * @default 16
        */
-      max_batch_count?: number;
+      max_batch_count?: number
       /**
-       * Embeddings Dir 
-       * @description embeddings directory for textual inversion (default: embeddings) 
+       * Embeddings Dir
+       * @description embeddings directory for textual inversion (default: embeddings)
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/embeddings
        */
-      embeddings_dir?: string;
+      embeddings_dir?: string
       /**
-       * Hypernetwork Dir 
-       * @description hypernetwork directory 
+       * Hypernetwork Dir
+       * @description hypernetwork directory
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/hypernetworks
        */
-      hypernetwork_dir?: string;
+      hypernetwork_dir?: string
       /**
-       * Localizations Dir 
-       * @description localizations directory 
+       * Localizations Dir
+       * @description localizations directory
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/localizations
        */
-      localizations_dir?: string;
+      localizations_dir?: string
       /**
-       * Allow Code 
-       * @description allow custom script execution from webui 
+       * Allow Code
+       * @description allow custom script execution from webui
        * @default false
        */
-      allow_code?: boolean;
+      allow_code?: boolean
       /**
-       * Medvram 
-       * @description enable stable diffusion model optimizations for sacrificing a little speed for low VRM usage 
+       * Medvram
+       * @description enable stable diffusion model optimizations for sacrificing a little speed for low VRM usage
        * @default false
        */
-      medvram?: boolean;
+      medvram?: boolean
       /**
-       * Lowvram 
-       * @description enable stable diffusion model optimizations for sacrificing a lot of speed for very low VRM usage 
+       * Lowvram
+       * @description enable stable diffusion model optimizations for sacrificing a lot of speed for very low VRM usage
        * @default false
        */
-      lowvram?: boolean;
+      lowvram?: boolean
       /**
-       * Lowram 
-       * @description load stable diffusion checkpoint weights to VRAM instead of RAM 
+       * Lowram
+       * @description load stable diffusion checkpoint weights to VRAM instead of RAM
        * @default false
        */
-      lowram?: boolean;
+      lowram?: boolean
       /**
-       * Always Batch Cond Uncond 
-       * @description disables cond/uncond batching that is enabled to save memory with --medvram or --lowvram 
+       * Always Batch Cond Uncond
+       * @description disables cond/uncond batching that is enabled to save memory with --medvram or --lowvram
        * @default false
        */
-      always_batch_cond_uncond?: boolean;
+      always_batch_cond_uncond?: boolean
       /**
-       * Unload Gfpgan 
-       * @description does not do anything. 
+       * Unload Gfpgan
+       * @description does not do anything.
        * @default false
        */
-      unload_gfpgan?: boolean;
+      unload_gfpgan?: boolean
       /**
-       * Precision 
-       * @description evaluate at this precision 
+       * Precision
+       * @description evaluate at this precision
        * @default autocast
        */
-      precision?: string;
+      precision?: string
       /**
-       * Share 
-       * @description use share=True for gradio and make the UI accessible through their site 
+       * Share
+       * @description use share=True for gradio and make the UI accessible through their site
        * @default false
        */
-      share?: boolean;
+      share?: boolean
       /**
-       * Ngrok 
+       * Ngrok
        * @description ngrok authtoken, alternative to gradio --share
        */
-      ngrok?: string;
+      ngrok?: string
       /**
-       * Ngrok Region 
-       * @description The region in which ngrok should start. 
+       * Ngrok Region
+       * @description The region in which ngrok should start.
        * @default us
        */
-      ngrok_region?: string;
+      ngrok_region?: string
       /**
-       * Enable Insecure Extension Access 
-       * @description enable extensions tab regardless of other options 
+       * Enable Insecure Extension Access
+       * @description enable extensions tab regardless of other options
        * @default false
        */
-      enable_insecure_extension_access?: boolean;
+      enable_insecure_extension_access?: boolean
       /**
-       * Codeformer Models Path 
-       * @description Path to directory with codeformer model file(s). 
+       * Codeformer Models Path
+       * @description Path to directory with codeformer model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/Codeformer
        */
-      codeformer_models_path?: string;
+      codeformer_models_path?: string
       /**
-       * Gfpgan Models Path 
-       * @description Path to directory with GFPGAN model file(s). 
+       * Gfpgan Models Path
+       * @description Path to directory with GFPGAN model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/GFPGAN
        */
-      gfpgan_models_path?: string;
+      gfpgan_models_path?: string
       /**
-       * Esrgan Models Path 
-       * @description Path to directory with ESRGAN model file(s). 
+       * Esrgan Models Path
+       * @description Path to directory with ESRGAN model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/ESRGAN
        */
-      esrgan_models_path?: string;
+      esrgan_models_path?: string
       /**
-       * Bsrgan Models Path 
-       * @description Path to directory with BSRGAN model file(s). 
+       * Bsrgan Models Path
+       * @description Path to directory with BSRGAN model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/BSRGAN
        */
-      bsrgan_models_path?: string;
+      bsrgan_models_path?: string
       /**
-       * Realesrgan Models Path 
-       * @description Path to directory with RealESRGAN model file(s). 
+       * Realesrgan Models Path
+       * @description Path to directory with RealESRGAN model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/RealESRGAN
        */
-      realesrgan_models_path?: string;
+      realesrgan_models_path?: string
       /**
-       * Clip Models Path 
+       * Clip Models Path
        * @description Path to directory with CLIP model file(s).
        */
-      clip_models_path?: string;
+      clip_models_path?: string
       /**
-       * Xformers 
-       * @description enable xformers for cross attention layers 
+       * Xformers
+       * @description enable xformers for cross attention layers
        * @default false
        */
-      xformers?: boolean;
+      xformers?: boolean
       /**
-       * Force Enable Xformers 
-       * @description enable xformers for cross attention layers regardless of whether the checking code thinks you can run it; do not make bug reports if this fails to work 
+       * Force Enable Xformers
+       * @description enable xformers for cross attention layers regardless of whether the checking code thinks you can run it; do not make bug reports if this fails to work
        * @default false
        */
-      force_enable_xformers?: boolean;
+      force_enable_xformers?: boolean
       /**
-       * Deepdanbooru 
-       * @description does not do anything 
+       * Deepdanbooru
+       * @description does not do anything
        * @default false
        */
-      deepdanbooru?: boolean;
+      deepdanbooru?: boolean
       /**
-       * Opt Split Attention 
-       * @description force-enables Doggettx's cross-attention layer optimization. By default, it's on for torch cuda. 
+       * Opt Split Attention
+       * @description force-enables Doggettx's cross-attention layer optimization. By default, it's on for torch cuda.
        * @default false
        */
-      opt_split_attention?: boolean;
+      opt_split_attention?: boolean
       /**
-       * Opt Split Attention Invokeai 
-       * @description force-enables InvokeAI's cross-attention layer optimization. By default, it's on when cuda is unavailable. 
+       * Opt Split Attention Invokeai
+       * @description force-enables InvokeAI's cross-attention layer optimization. By default, it's on when cuda is unavailable.
        * @default false
        */
-      opt_split_attention_invokeai?: boolean;
+      opt_split_attention_invokeai?: boolean
       /**
-       * Opt Split Attention V1 
-       * @description enable older version of split attention optimization that does not consume all the VRAM it can find 
+       * Opt Split Attention V1
+       * @description enable older version of split attention optimization that does not consume all the VRAM it can find
        * @default false
        */
-      opt_split_attention_v1?: boolean;
+      opt_split_attention_v1?: boolean
       /**
-       * Disable Opt Split Attention 
-       * @description force-disables cross-attention layer optimization 
+       * Disable Opt Split Attention
+       * @description force-disables cross-attention layer optimization
        * @default false
        */
-      disable_opt_split_attention?: boolean;
+      disable_opt_split_attention?: boolean
       /**
-       * Use Cpu 
-       * @description use CPU as torch device for specified modules 
+       * Use Cpu
+       * @description use CPU as torch device for specified modules
        * @default []
        */
-      use_cpu?: (Record<string, never>)[];
+      use_cpu?: Record<string, never>[]
       /**
-       * Listen 
-       * @description launch gradio with 0.0.0.0 as server name, allowing to respond to network requests 
+       * Listen
+       * @description launch gradio with 0.0.0.0 as server name, allowing to respond to network requests
        * @default false
        */
-      listen?: boolean;
+      listen?: boolean
       /**
-       * Port 
+       * Port
        * @description launch gradio with given server port, you need root/admin rights for ports < 1024, defaults to 7860 if available
        */
-      port?: string;
+      port?: string
       /**
-       * Show Negative Prompt 
-       * @description does not do anything 
+       * Show Negative Prompt
+       * @description does not do anything
        * @default false
        */
-      show_negative_prompt?: boolean;
+      show_negative_prompt?: boolean
       /**
-       * Ui Config File 
-       * @description filename to use for ui configuration 
+       * Ui Config File
+       * @description filename to use for ui configuration
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/ui-config.json
        */
-      ui_config_file?: string;
+      ui_config_file?: string
       /**
-       * Hide Ui Dir Config 
-       * @description hide directory configuration from webui 
+       * Hide Ui Dir Config
+       * @description hide directory configuration from webui
        * @default false
        */
-      hide_ui_dir_config?: boolean;
+      hide_ui_dir_config?: boolean
       /**
-       * Freeze Settings 
-       * @description disable editing settings 
+       * Freeze Settings
+       * @description disable editing settings
        * @default false
        */
-      freeze_settings?: boolean;
+      freeze_settings?: boolean
       /**
-       * Ui Settings File 
-       * @description filename to use for ui settings 
+       * Ui Settings File
+       * @description filename to use for ui settings
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/config.json
        */
-      ui_settings_file?: string;
+      ui_settings_file?: string
       /**
-       * Gradio Debug 
-       * @description launch gradio with --debug option 
+       * Gradio Debug
+       * @description launch gradio with --debug option
        * @default false
        */
-      gradio_debug?: boolean;
+      gradio_debug?: boolean
       /**
-       * Gradio Auth 
+       * Gradio Auth
        * @description set gradio authentication like "username:password"; or comma-delimit multiple like "u1:p1,u2:p2,u3:p3"
        */
-      gradio_auth?: string;
+      gradio_auth?: string
       /**
-       * Gradio Img2Img Tool 
-       * @description gradio image uploader tool: can be either editor for ctopping, or color-sketch for drawing 
+       * Gradio Img2Img Tool
+       * @description gradio image uploader tool: can be either editor for ctopping, or color-sketch for drawing
        * @default editor
        */
-      gradio_img2img_tool?: string;
+      gradio_img2img_tool?: string
       /**
-       * Gradio Inpaint Tool 
-       * @description gradio inpainting editor: can be either sketch to only blur/noise the input, or color-sketch to paint over it 
+       * Gradio Inpaint Tool
+       * @description gradio inpainting editor: can be either sketch to only blur/noise the input, or color-sketch to paint over it
        * @default sketch
        */
-      gradio_inpaint_tool?: string;
+      gradio_inpaint_tool?: string
       /**
-       * Opt Channelslast 
-       * @description change memory type for stable diffusion to channels last 
+       * Opt Channelslast
+       * @description change memory type for stable diffusion to channels last
        * @default false
        */
-      opt_channelslast?: boolean;
+      opt_channelslast?: boolean
       /**
-       * Styles File 
-       * @description filename to use for styles 
+       * Styles File
+       * @description filename to use for styles
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/styles.csv
        */
-      styles_file?: string;
+      styles_file?: string
       /**
-       * Autolaunch 
-       * @description open the webui URL in the system's default browser upon launch 
+       * Autolaunch
+       * @description open the webui URL in the system's default browser upon launch
        * @default false
        */
-      autolaunch?: boolean;
+      autolaunch?: boolean
       /**
-       * Theme 
+       * Theme
        * @description launches the UI with light or dark theme
        */
-      theme?: string;
+      theme?: string
       /**
-       * Use Textbox Seed 
-       * @description use textbox for seeds in UI (no up/down, but possible to input long seeds) 
+       * Use Textbox Seed
+       * @description use textbox for seeds in UI (no up/down, but possible to input long seeds)
        * @default false
        */
-      use_textbox_seed?: boolean;
+      use_textbox_seed?: boolean
       /**
-       * Disable Console Progressbars 
-       * @description do not output progressbars to console 
+       * Disable Console Progressbars
+       * @description do not output progressbars to console
        * @default false
        */
-      disable_console_progressbars?: boolean;
+      disable_console_progressbars?: boolean
       /**
-       * Enable Console Prompts 
-       * @description print prompts to console when generating with txt2img and img2img 
+       * Enable Console Prompts
+       * @description print prompts to console when generating with txt2img and img2img
        * @default false
        */
-      enable_console_prompts?: boolean;
+      enable_console_prompts?: boolean
       /**
-       * Vae Path 
+       * Vae Path
        * @description Path to Variational Autoencoders model
        */
-      vae_path?: string;
+      vae_path?: string
       /**
-       * Disable Safe Unpickle 
-       * @description disable checking pytorch models for malicious code 
+       * Disable Safe Unpickle
+       * @description disable checking pytorch models for malicious code
        * @default false
        */
-      disable_safe_unpickle?: boolean;
+      disable_safe_unpickle?: boolean
       /**
-       * Api 
-       * @description use api=True to launch the API together with the webui (use --nowebui instead for only the API) 
+       * Api
+       * @description use api=True to launch the API together with the webui (use --nowebui instead for only the API)
        * @default false
        */
-      api?: boolean;
+      api?: boolean
       /**
-       * Api Auth 
+       * Api Auth
        * @description Set authentication for API like "username:password"; or comma-delimit multiple like "u1:p1,u2:p2,u3:p3"
        */
-      api_auth?: string;
+      api_auth?: string
       /**
-       * Nowebui 
-       * @description use api=True to launch the API instead of the webui 
+       * Nowebui
+       * @description use api=True to launch the API instead of the webui
        * @default false
        */
-      nowebui?: boolean;
+      nowebui?: boolean
       /**
-       * Ui Debug Mode 
-       * @description Don't load model to quickly launch UI 
+       * Ui Debug Mode
+       * @description Don't load model to quickly launch UI
        * @default false
        */
-      ui_debug_mode?: boolean;
+      ui_debug_mode?: boolean
       /**
-       * Device Id 
+       * Device Id
        * @description Select the default CUDA device to use (export CUDA_VISIBLE_DEVICES=0,1,etc might be needed before)
        */
-      device_id?: string;
+      device_id?: string
       /**
-       * Administrator 
-       * @description Administrator rights 
+       * Administrator
+       * @description Administrator rights
        * @default false
        */
-      administrator?: boolean;
+      administrator?: boolean
       /**
-       * Cors Allow Origins 
+       * Cors Allow Origins
        * @description Allowed CORS origin(s) in the form of a comma-separated list (no spaces)
        */
-      cors_allow_origins?: string;
+      cors_allow_origins?: string
       /**
-       * Cors Allow Origins Regex 
+       * Cors Allow Origins Regex
        * @description Allowed CORS origin(s) in the form of a single regular expression
        */
-      cors_allow_origins_regex?: string;
+      cors_allow_origins_regex?: string
       /**
-       * Tls Keyfile 
+       * Tls Keyfile
        * @description Partially enables TLS, requires --tls-certfile to fully function
        */
-      tls_keyfile?: string;
+      tls_keyfile?: string
       /**
-       * Tls Certfile 
+       * Tls Certfile
        * @description Partially enables TLS, requires --tls-keyfile to fully function
        */
-      tls_certfile?: string;
+      tls_certfile?: string
       /**
-       * Server Name 
+       * Server Name
        * @description Sets hostname of server
        */
-      server_name?: string;
+      server_name?: string
       /**
-       * Ldsr Models Path 
-       * @description Path to directory with LDSR model file(s). 
+       * Ldsr Models Path
+       * @description Path to directory with LDSR model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/LDSR
        */
-      ldsr_models_path?: string;
+      ldsr_models_path?: string
       /**
-       * Scunet Models Path 
-       * @description Path to directory with ScuNET model file(s). 
+       * Scunet Models Path
+       * @description Path to directory with ScuNET model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/ScuNET
        */
-      scunet_models_path?: string;
+      scunet_models_path?: string
       /**
-       * Swinir Models Path 
-       * @description Path to directory with SwinIR model file(s). 
+       * Swinir Models Path
+       * @description Path to directory with SwinIR model file(s).
        * @default /content/gdrive/MyDrive/sd/stable-diffusion-webui/models/SwinIR
        */
-      swinir_models_path?: string;
-    };
+      swinir_models_path?: string
+    }
     /** HTTPValidationError */
     HTTPValidationError: {
       /** Detail */
-      detail?: (components["schemas"]["ValidationError"])[];
-    };
+      detail?: components['schemas']['ValidationError'][]
+    }
     /** HypernetworkItem */
     HypernetworkItem: {
       /** Name */
-      name: string;
+      name: string
       /** Path */
-      path?: string;
-    };
+      path?: string
+    }
     /** ImageToImageResponse */
     ImageToImageResponse: {
       /**
-       * Image 
+       * Image
        * @description The generated image in base64 format.
        */
-      images?: (string)[];
+      images?: string[]
       /** Parameters */
-      parameters: Record<string, never>;
+      parameters: Record<string, never>
       /** Info */
-      info: string;
-    };
+      info: string
+    }
     /** InterrogateRequest */
     InterrogateRequest: {
       /**
-       * Image 
-       * @description Image to work on, must be a Base64 string containing the image's data. 
+       * Image
+       * @description Image to work on, must be a Base64 string containing the image's data.
        * @default
        */
-      image?: string;
+      image?: string
       /**
-       * Model 
-       * @description The interrogate model used. 
+       * Model
+       * @description The interrogate model used.
        * @default clip
        */
-      model?: string;
-    };
+      model?: string
+    }
     /** Options */
     Options: {
       /**
-       * Samples Save 
-       * @description Always save all generated images 
+       * Samples Save
+       * @description Always save all generated images
        * @default true
        */
-      samples_save?: boolean;
+      samples_save?: boolean
       /**
-       * Samples Format 
-       * @description File format for images 
+       * Samples Format
+       * @description File format for images
        * @default png
        */
-      samples_format?: string;
+      samples_format?: string
       /**
-       * Samples Filename Pattern 
-       * @description Images filename pattern 
+       * Samples Filename Pattern
+       * @description Images filename pattern
        * @default
        */
-      samples_filename_pattern?: string;
+      samples_filename_pattern?: string
       /**
-       * Save Images Add Number 
-       * @description Add number to filename when saving 
+       * Save Images Add Number
+       * @description Add number to filename when saving
        * @default true
        */
-      save_images_add_number?: boolean;
+      save_images_add_number?: boolean
       /**
-       * Grid Save 
-       * @description Always save all generated image grids 
+       * Grid Save
+       * @description Always save all generated image grids
        * @default true
        */
-      grid_save?: boolean;
+      grid_save?: boolean
       /**
-       * Grid Format 
-       * @description File format for grids 
+       * Grid Format
+       * @description File format for grids
        * @default png
        */
-      grid_format?: string;
+      grid_format?: string
       /**
-       * Grid Extended Filename 
-       * @description Add extended info (seed, prompt) to filename when saving grid 
+       * Grid Extended Filename
+       * @description Add extended info (seed, prompt) to filename when saving grid
        * @default false
        */
-      grid_extended_filename?: boolean;
+      grid_extended_filename?: boolean
       /**
-       * Grid Only If Multiple 
-       * @description Do not save grids consisting of one picture 
+       * Grid Only If Multiple
+       * @description Do not save grids consisting of one picture
        * @default true
        */
-      grid_only_if_multiple?: boolean;
+      grid_only_if_multiple?: boolean
       /**
-       * Grid Prevent Empty Spots 
-       * @description Prevent empty spots in grid (when set to autodetect) 
+       * Grid Prevent Empty Spots
+       * @description Prevent empty spots in grid (when set to autodetect)
        * @default false
        */
-      grid_prevent_empty_spots?: boolean;
+      grid_prevent_empty_spots?: boolean
       /**
-       * N Rows 
-       * @description Grid row count; use -1 for autodetect and 0 for it to be same as batch size 
+       * N Rows
+       * @description Grid row count; use -1 for autodetect and 0 for it to be same as batch size
        * @default -1
        */
-      n_rows?: number;
+      n_rows?: number
       /**
-       * Enable Pnginfo 
-       * @description Save text information about generation parameters as chunks to png files 
+       * Enable Pnginfo
+       * @description Save text information about generation parameters as chunks to png files
        * @default true
        */
-      enable_pnginfo?: boolean;
+      enable_pnginfo?: boolean
       /**
-       * Save Txt 
-       * @description Create a text file next to every image with generation parameters. 
+       * Save Txt
+       * @description Create a text file next to every image with generation parameters.
        * @default false
        */
-      save_txt?: boolean;
+      save_txt?: boolean
       /**
-       * Save Images Before Face Restoration 
-       * @description Save a copy of image before doing face restoration. 
+       * Save Images Before Face Restoration
+       * @description Save a copy of image before doing face restoration.
        * @default false
        */
-      save_images_before_face_restoration?: boolean;
+      save_images_before_face_restoration?: boolean
       /**
-       * Save Images Before Highres Fix 
-       * @description Save a copy of image before applying highres fix. 
+       * Save Images Before Highres Fix
+       * @description Save a copy of image before applying highres fix.
        * @default false
        */
-      save_images_before_highres_fix?: boolean;
+      save_images_before_highres_fix?: boolean
       /**
-       * Save Images Before Color Correction 
-       * @description Save a copy of image before applying color correction to img2img results 
+       * Save Images Before Color Correction
+       * @description Save a copy of image before applying color correction to img2img results
        * @default false
        */
-      save_images_before_color_correction?: boolean;
+      save_images_before_color_correction?: boolean
       /**
-       * Jpeg Quality 
-       * @description Quality for saved jpeg images 
+       * Jpeg Quality
+       * @description Quality for saved jpeg images
        * @default 80
        */
-      jpeg_quality?: number;
+      jpeg_quality?: number
       /**
-       * Export For 4Chan 
-       * @description If PNG image is larger than 4MB or any dimension is larger than 4000, downscale and save copy as JPG 
+       * Export For 4Chan
+       * @description If PNG image is larger than 4MB or any dimension is larger than 4000, downscale and save copy as JPG
        * @default true
        */
-      export_for_4chan?: boolean;
+      export_for_4chan?: boolean
       /**
-       * Use Original Name Batch 
-       * @description Use original name for output filename during batch process in extras tab 
+       * Use Original Name Batch
+       * @description Use original name for output filename during batch process in extras tab
        * @default false
        */
-      use_original_name_batch?: boolean;
+      use_original_name_batch?: boolean
       /**
-       * Use Upscaler Name As Suffix 
-       * @description Use upscaler name as filename suffix in the extras tab 
+       * Use Upscaler Name As Suffix
+       * @description Use upscaler name as filename suffix in the extras tab
        * @default false
        */
-      use_upscaler_name_as_suffix?: boolean;
+      use_upscaler_name_as_suffix?: boolean
       /**
-       * Save Selected Only 
-       * @description When using 'Save' button, only save a single selected image 
+       * Save Selected Only
+       * @description When using 'Save' button, only save a single selected image
        * @default true
        */
-      save_selected_only?: boolean;
+      save_selected_only?: boolean
       /**
-       * Do Not Add Watermark 
-       * @description Do not add watermark to images 
+       * Do Not Add Watermark
+       * @description Do not add watermark to images
        * @default false
        */
-      do_not_add_watermark?: boolean;
+      do_not_add_watermark?: boolean
       /**
-       * Temp Dir 
-       * @description Directory for temporary images; leave empty for default 
+       * Temp Dir
+       * @description Directory for temporary images; leave empty for default
        * @default
        */
-      temp_dir?: string;
+      temp_dir?: string
       /**
-       * Clean Temp Dir At Start 
-       * @description Cleanup non-default temporary directory when starting webui 
+       * Clean Temp Dir At Start
+       * @description Cleanup non-default temporary directory when starting webui
        * @default false
        */
-      clean_temp_dir_at_start?: boolean;
+      clean_temp_dir_at_start?: boolean
       /**
-       * Outdir Samples 
-       * @description Output directory for images; if empty, defaults to three directories below 
+       * Outdir Samples
+       * @description Output directory for images; if empty, defaults to three directories below
        * @default
        */
-      outdir_samples?: string;
+      outdir_samples?: string
       /**
-       * Outdir Txt2Img Samples 
-       * @description Output directory for txt2img images 
+       * Outdir Txt2Img Samples
+       * @description Output directory for txt2img images
        * @default outputs/txt2img-images
        */
-      outdir_txt2img_samples?: string;
+      outdir_txt2img_samples?: string
       /**
-       * Outdir Img2Img Samples 
-       * @description Output directory for img2img images 
+       * Outdir Img2Img Samples
+       * @description Output directory for img2img images
        * @default outputs/img2img-images
        */
-      outdir_img2img_samples?: string;
+      outdir_img2img_samples?: string
       /**
-       * Outdir Extras Samples 
-       * @description Output directory for images from extras tab 
+       * Outdir Extras Samples
+       * @description Output directory for images from extras tab
        * @default outputs/extras-images
        */
-      outdir_extras_samples?: string;
+      outdir_extras_samples?: string
       /**
-       * Outdir Grids 
-       * @description Output directory for grids; if empty, defaults to two directories below 
+       * Outdir Grids
+       * @description Output directory for grids; if empty, defaults to two directories below
        * @default
        */
-      outdir_grids?: string;
+      outdir_grids?: string
       /**
-       * Outdir Txt2Img Grids 
-       * @description Output directory for txt2img grids 
+       * Outdir Txt2Img Grids
+       * @description Output directory for txt2img grids
        * @default outputs/txt2img-grids
        */
-      outdir_txt2img_grids?: string;
+      outdir_txt2img_grids?: string
       /**
-       * Outdir Img2Img Grids 
-       * @description Output directory for img2img grids 
+       * Outdir Img2Img Grids
+       * @description Output directory for img2img grids
        * @default outputs/img2img-grids
        */
-      outdir_img2img_grids?: string;
+      outdir_img2img_grids?: string
       /**
-       * Outdir Save 
-       * @description Directory for saving images using the Save button 
+       * Outdir Save
+       * @description Directory for saving images using the Save button
        * @default log/images
        */
-      outdir_save?: string;
+      outdir_save?: string
       /**
-       * Save To Dirs 
-       * @description Save images to a subdirectory 
+       * Save To Dirs
+       * @description Save images to a subdirectory
        * @default false
        */
-      save_to_dirs?: boolean;
+      save_to_dirs?: boolean
       /**
-       * Grid Save To Dirs 
-       * @description Save grids to a subdirectory 
+       * Grid Save To Dirs
+       * @description Save grids to a subdirectory
        * @default false
        */
-      grid_save_to_dirs?: boolean;
+      grid_save_to_dirs?: boolean
       /**
-       * Use Save To Dirs For Ui 
-       * @description When using "Save" button, save images to a subdirectory 
+       * Use Save To Dirs For Ui
+       * @description When using "Save" button, save images to a subdirectory
        * @default false
        */
-      use_save_to_dirs_for_ui?: boolean;
+      use_save_to_dirs_for_ui?: boolean
       /**
-       * Directories Filename Pattern 
-       * @description Directory name pattern 
+       * Directories Filename Pattern
+       * @description Directory name pattern
        * @default
        */
-      directories_filename_pattern?: string;
+      directories_filename_pattern?: string
       /**
-       * Directories Max Prompt Words 
-       * @description Max prompt words for [prompt_words] pattern 
+       * Directories Max Prompt Words
+       * @description Max prompt words for [prompt_words] pattern
        * @default 8
        */
-      directories_max_prompt_words?: number;
+      directories_max_prompt_words?: number
       /**
-       * Esrgan Tile 
-       * @description Tile size for ESRGAN upscalers. 0 = no tiling. 
+       * Esrgan Tile
+       * @description Tile size for ESRGAN upscalers. 0 = no tiling.
        * @default 192
        */
-      ESRGAN_tile?: number;
+      ESRGAN_tile?: number
       /**
-       * Esrgan Tile Overlap 
-       * @description Tile overlap, in pixels for ESRGAN upscalers. Low values = visible seam. 
+       * Esrgan Tile Overlap
+       * @description Tile overlap, in pixels for ESRGAN upscalers. Low values = visible seam.
        * @default 8
        */
-      ESRGAN_tile_overlap?: number;
+      ESRGAN_tile_overlap?: number
       /**
-       * Realesrgan Enabled Models 
-       * @description Select which Real-ESRGAN models to show in the web UI. (Requires restart) 
+       * Realesrgan Enabled Models
+       * @description Select which Real-ESRGAN models to show in the web UI. (Requires restart)
        * @default [
        *   "R-ESRGAN 4x+",
        *   "R-ESRGAN 4x+ Anime6B"
        * ]
        */
-      realesrgan_enabled_models?: (Record<string, never>)[];
+      realesrgan_enabled_models?: Record<string, never>[]
       /**
-       * Upscaler For Img2Img 
+       * Upscaler For Img2Img
        * @description Upscaler for img2img
        */
-      upscaler_for_img2img?: null;
+      upscaler_for_img2img?: null
       /**
-       * Use Scale Latent For Hires Fix 
-       * @description Upscale latent space image when doing hires. fix 
+       * Use Scale Latent For Hires Fix
+       * @description Upscale latent space image when doing hires. fix
        * @default false
        */
-      use_scale_latent_for_hires_fix?: boolean;
+      use_scale_latent_for_hires_fix?: boolean
       /**
-       * Ldsr Steps 
-       * @description LDSR processing steps. Lower = faster 
+       * Ldsr Steps
+       * @description LDSR processing steps. Lower = faster
        * @default 100
        */
-      ldsr_steps?: number;
+      ldsr_steps?: number
       /**
-       * Ldsr Cached 
-       * @description Cache LDSR model in memory 
+       * Ldsr Cached
+       * @description Cache LDSR model in memory
        * @default false
        */
-      ldsr_cached?: null;
+      ldsr_cached?: null
       /**
-       * Swin Tile 
-       * @description Tile size for all SwinIR. 
+       * Swin Tile
+       * @description Tile size for all SwinIR.
        * @default 192
        */
-      SWIN_tile?: number;
+      SWIN_tile?: number
       /**
-       * Swin Tile Overlap 
-       * @description Tile overlap, in pixels for SwinIR. Low values = visible seam. 
+       * Swin Tile Overlap
+       * @description Tile overlap, in pixels for SwinIR. Low values = visible seam.
        * @default 8
        */
-      SWIN_tile_overlap?: number;
+      SWIN_tile_overlap?: number
       /**
-       * Face Restoration Model 
+       * Face Restoration Model
        * @description Face restoration model
        */
-      face_restoration_model?: null;
+      face_restoration_model?: null
       /**
-       * Code Former Weight 
-       * @description CodeFormer weight parameter; 0 = maximum effect; 1 = minimum effect 
+       * Code Former Weight
+       * @description CodeFormer weight parameter; 0 = maximum effect; 1 = minimum effect
        * @default 0.5
        */
-      code_former_weight?: number;
+      code_former_weight?: number
       /**
-       * Face Restoration Unload 
-       * @description Move face restoration model from VRAM into RAM after processing 
+       * Face Restoration Unload
+       * @description Move face restoration model from VRAM into RAM after processing
        * @default false
        */
-      face_restoration_unload?: boolean;
+      face_restoration_unload?: boolean
       /**
-       * Memmon Poll Rate 
-       * @description VRAM usage polls per second during generation. Set to 0 to disable. 
+       * Memmon Poll Rate
+       * @description VRAM usage polls per second during generation. Set to 0 to disable.
        * @default 8
        */
-      memmon_poll_rate?: number;
+      memmon_poll_rate?: number
       /**
-       * Samples Log Stdout 
-       * @description Always print all generation info to standard output 
+       * Samples Log Stdout
+       * @description Always print all generation info to standard output
        * @default false
        */
-      samples_log_stdout?: boolean;
+      samples_log_stdout?: boolean
       /**
-       * Multiple Tqdm 
-       * @description Add a second progress bar to the console that shows progress for an entire job. 
+       * Multiple Tqdm
+       * @description Add a second progress bar to the console that shows progress for an entire job.
        * @default true
        */
-      multiple_tqdm?: boolean;
+      multiple_tqdm?: boolean
       /**
-       * Unload Models When Training 
-       * @description Move VAE and CLIP to RAM when training if possible. Saves VRAM. 
+       * Unload Models When Training
+       * @description Move VAE and CLIP to RAM when training if possible. Saves VRAM.
        * @default false
        */
-      unload_models_when_training?: boolean;
+      unload_models_when_training?: boolean
       /**
-       * Pin Memory 
-       * @description Turn on pin_memory for DataLoader. Makes training slightly faster but can increase memory usage. 
+       * Pin Memory
+       * @description Turn on pin_memory for DataLoader. Makes training slightly faster but can increase memory usage.
        * @default false
        */
-      pin_memory?: boolean;
+      pin_memory?: boolean
       /**
-       * Save Optimizer State 
-       * @description Saves Optimizer state as separate *.optim file. Training can be resumed with HN itself and matching optim file. 
+       * Save Optimizer State
+       * @description Saves Optimizer state as separate *.optim file. Training can be resumed with HN itself and matching optim file.
        * @default false
        */
-      save_optimizer_state?: boolean;
+      save_optimizer_state?: boolean
       /**
-       * Dataset Filename Word Regex 
-       * @description Filename word regex 
+       * Dataset Filename Word Regex
+       * @description Filename word regex
        * @default
        */
-      dataset_filename_word_regex?: string;
+      dataset_filename_word_regex?: string
       /**
-       * Dataset Filename Join String 
-       * @description Filename join string 
+       * Dataset Filename Join String
+       * @description Filename join string
        * @default
        */
-      dataset_filename_join_string?: string;
+      dataset_filename_join_string?: string
       /**
-       * Training Image Repeats Per Epoch 
-       * @description Number of repeats for a single input image per epoch; used only for displaying epoch number 
+       * Training Image Repeats Per Epoch
+       * @description Number of repeats for a single input image per epoch; used only for displaying epoch number
        * @default 1
        */
-      training_image_repeats_per_epoch?: number;
+      training_image_repeats_per_epoch?: number
       /**
-       * Training Write Csv Every 
-       * @description Save an csv containing the loss to log directory every N steps, 0 to disable 
+       * Training Write Csv Every
+       * @description Save an csv containing the loss to log directory every N steps, 0 to disable
        * @default 500
        */
-      training_write_csv_every?: number;
+      training_write_csv_every?: number
       /**
-       * Training Xattention Optimizations 
-       * @description Use cross attention optimizations while training 
+       * Training Xattention Optimizations
+       * @description Use cross attention optimizations while training
        * @default false
        */
-      training_xattention_optimizations?: boolean;
+      training_xattention_optimizations?: boolean
       /**
-       * Sd Model Checkpoint 
+       * Sd Model Checkpoint
        * @description Stable Diffusion checkpoint
        */
-      sd_model_checkpoint?: string;
+      sd_model_checkpoint?: string
       /**
-       * Sd Checkpoint Cache 
-       * @description Checkpoints to cache in RAM 
+       * Sd Checkpoint Cache
+       * @description Checkpoints to cache in RAM
        * @default 0
        */
-      sd_checkpoint_cache?: number;
+      sd_checkpoint_cache?: number
       /**
-       * Sd Vae 
-       * @description SD VAE 
+       * Sd Vae
+       * @description SD VAE
        * @default auto
        */
-      sd_vae?: string;
+      sd_vae?: string
       /**
-       * Sd Vae As Default 
-       * @description Ignore selected VAE for stable diffusion checkpoints that have their own .vae.pt next to them 
+       * Sd Vae As Default
+       * @description Ignore selected VAE for stable diffusion checkpoints that have their own .vae.pt next to them
        * @default false
        */
-      sd_vae_as_default?: boolean;
+      sd_vae_as_default?: boolean
       /**
-       * Sd Hypernetwork 
-       * @description Hypernetwork 
+       * Sd Hypernetwork
+       * @description Hypernetwork
        * @default None
        */
-      sd_hypernetwork?: string;
+      sd_hypernetwork?: string
       /**
-       * Sd Hypernetwork Strength 
-       * @description Hypernetwork strength 
+       * Sd Hypernetwork Strength
+       * @description Hypernetwork strength
        * @default 1
        */
-      sd_hypernetwork_strength?: number;
+      sd_hypernetwork_strength?: number
       /**
-       * Inpainting Mask Weight 
-       * @description Inpainting conditioning mask strength 
+       * Inpainting Mask Weight
+       * @description Inpainting conditioning mask strength
        * @default 1
        */
-      inpainting_mask_weight?: number;
+      inpainting_mask_weight?: number
       /**
-       * Initial Noise Multiplier 
-       * @description Noise multiplier for img2img 
+       * Initial Noise Multiplier
+       * @description Noise multiplier for img2img
        * @default 1
        */
-      initial_noise_multiplier?: number;
+      initial_noise_multiplier?: number
       /**
-       * Img2Img Color Correction 
-       * @description Apply color correction to img2img results to match original colors. 
+       * Img2Img Color Correction
+       * @description Apply color correction to img2img results to match original colors.
        * @default false
        */
-      img2img_color_correction?: boolean;
+      img2img_color_correction?: boolean
       /**
-       * Img2Img Fix Steps 
-       * @description With img2img, do exactly the amount of steps the slider specifies (normally you'd do less with less denoising). 
+       * Img2Img Fix Steps
+       * @description With img2img, do exactly the amount of steps the slider specifies (normally you'd do less with less denoising).
        * @default false
        */
-      img2img_fix_steps?: boolean;
+      img2img_fix_steps?: boolean
       /**
-       * Img2Img Background Color 
-       * @description With img2img, fill image's transparent parts with this color. 
+       * Img2Img Background Color
+       * @description With img2img, fill image's transparent parts with this color.
        * @default #ffffff
        */
-      img2img_background_color?: string;
+      img2img_background_color?: string
       /**
-       * Enable Quantization 
-       * @description Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds. Requires restart to apply. 
+       * Enable Quantization
+       * @description Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds. Requires restart to apply.
        * @default false
        */
-      enable_quantization?: boolean;
+      enable_quantization?: boolean
       /**
-       * Enable Emphasis 
-       * @description Emphasis: use (text) to make model pay more attention to text and [text] to make it pay less attention 
+       * Enable Emphasis
+       * @description Emphasis: use (text) to make model pay more attention to text and [text] to make it pay less attention
        * @default true
        */
-      enable_emphasis?: boolean;
+      enable_emphasis?: boolean
       /**
-       * Use Old Emphasis Implementation 
-       * @description Use old emphasis implementation. Can be useful to reproduce old seeds. 
+       * Use Old Emphasis Implementation
+       * @description Use old emphasis implementation. Can be useful to reproduce old seeds.
        * @default false
        */
-      use_old_emphasis_implementation?: boolean;
+      use_old_emphasis_implementation?: boolean
       /**
-       * Enable Batch Seeds 
-       * @description Make K-diffusion samplers produce same images in a batch as when making a single image 
+       * Enable Batch Seeds
+       * @description Make K-diffusion samplers produce same images in a batch as when making a single image
        * @default true
        */
-      enable_batch_seeds?: boolean;
+      enable_batch_seeds?: boolean
       /**
-       * Comma Padding Backtrack 
-       * @description Increase coherency by padding from the last comma within n tokens when using more than 75 tokens 
+       * Comma Padding Backtrack
+       * @description Increase coherency by padding from the last comma within n tokens when using more than 75 tokens
        * @default 20
        */
-      comma_padding_backtrack?: number;
+      comma_padding_backtrack?: number
       /**
-       * Clip Stop At Last Layers 
-       * @description Clip skip 
+       * Clip Stop At Last Layers
+       * @description Clip skip
        * @default 1
        */
-      CLIP_stop_at_last_layers?: number;
+      CLIP_stop_at_last_layers?: number
       /**
-       * Random Artist Categories 
-       * @description Allowed categories for random artists selection when using the Roll button 
+       * Random Artist Categories
+       * @description Allowed categories for random artists selection when using the Roll button
        * @default []
        */
-      random_artist_categories?: (Record<string, never>)[];
+      random_artist_categories?: Record<string, never>[]
       /**
-       * Interrogate Keep Models In Memory 
-       * @description Interrogate: keep models in VRAM 
+       * Interrogate Keep Models In Memory
+       * @description Interrogate: keep models in VRAM
        * @default false
        */
-      interrogate_keep_models_in_memory?: boolean;
+      interrogate_keep_models_in_memory?: boolean
       /**
-       * Interrogate Use Builtin Artists 
-       * @description Interrogate: use artists from artists.csv 
+       * Interrogate Use Builtin Artists
+       * @description Interrogate: use artists from artists.csv
        * @default true
        */
-      interrogate_use_builtin_artists?: boolean;
+      interrogate_use_builtin_artists?: boolean
       /**
-       * Interrogate Return Ranks 
-       * @description Interrogate: include ranks of model tags matches in results (Has no effect on caption-based interrogators). 
+       * Interrogate Return Ranks
+       * @description Interrogate: include ranks of model tags matches in results (Has no effect on caption-based interrogators).
        * @default false
        */
-      interrogate_return_ranks?: boolean;
+      interrogate_return_ranks?: boolean
       /**
-       * Interrogate Clip Num Beams 
-       * @description Interrogate: num_beams for BLIP 
+       * Interrogate Clip Num Beams
+       * @description Interrogate: num_beams for BLIP
        * @default 1
        */
-      interrogate_clip_num_beams?: number;
+      interrogate_clip_num_beams?: number
       /**
-       * Interrogate Clip Min Length 
-       * @description Interrogate: minimum description length (excluding artists, etc..) 
+       * Interrogate Clip Min Length
+       * @description Interrogate: minimum description length (excluding artists, etc..)
        * @default 24
        */
-      interrogate_clip_min_length?: number;
+      interrogate_clip_min_length?: number
       /**
-       * Interrogate Clip Max Length 
-       * @description Interrogate: maximum description length 
+       * Interrogate Clip Max Length
+       * @description Interrogate: maximum description length
        * @default 48
        */
-      interrogate_clip_max_length?: number;
+      interrogate_clip_max_length?: number
       /**
-       * Interrogate Clip Dict Limit 
-       * @description CLIP: maximum number of lines in text file (0 = No limit) 
+       * Interrogate Clip Dict Limit
+       * @description CLIP: maximum number of lines in text file (0 = No limit)
        * @default 1500
        */
-      interrogate_clip_dict_limit?: number;
+      interrogate_clip_dict_limit?: number
       /**
-       * Interrogate Deepbooru Score Threshold 
-       * @description Interrogate: deepbooru score threshold 
+       * Interrogate Deepbooru Score Threshold
+       * @description Interrogate: deepbooru score threshold
        * @default 0.5
        */
-      interrogate_deepbooru_score_threshold?: number;
+      interrogate_deepbooru_score_threshold?: number
       /**
-       * Deepbooru Sort Alpha 
-       * @description Interrogate: deepbooru sort alphabetically 
+       * Deepbooru Sort Alpha
+       * @description Interrogate: deepbooru sort alphabetically
        * @default true
        */
-      deepbooru_sort_alpha?: boolean;
+      deepbooru_sort_alpha?: boolean
       /**
-       * Deepbooru Use Spaces 
-       * @description use spaces for tags in deepbooru 
+       * Deepbooru Use Spaces
+       * @description use spaces for tags in deepbooru
        * @default false
        */
-      deepbooru_use_spaces?: boolean;
+      deepbooru_use_spaces?: boolean
       /**
-       * Deepbooru Escape 
-       * @description escape (\) brackets in deepbooru (so they are used as literal brackets and not for emphasis) 
+       * Deepbooru Escape
+       * @description escape (\) brackets in deepbooru (so they are used as literal brackets and not for emphasis)
        * @default true
        */
-      deepbooru_escape?: boolean;
+      deepbooru_escape?: boolean
       /**
-       * Deepbooru Filter Tags 
-       * @description filter out those tags from deepbooru output (separated by comma) 
+       * Deepbooru Filter Tags
+       * @description filter out those tags from deepbooru output (separated by comma)
        * @default
        */
-      deepbooru_filter_tags?: string;
+      deepbooru_filter_tags?: string
       /**
-       * Show Progressbar 
-       * @description Show progressbar 
+       * Show Progressbar
+       * @description Show progressbar
        * @default true
        */
-      show_progressbar?: boolean;
+      show_progressbar?: boolean
       /**
-       * Show Progress Every N Steps 
-       * @description Show image creation progress every N sampling steps. Set to 0 to disable. Set to -1 to show after completion of batch. 
+       * Show Progress Every N Steps
+       * @description Show image creation progress every N sampling steps. Set to 0 to disable. Set to -1 to show after completion of batch.
        * @default 0
        */
-      show_progress_every_n_steps?: number;
+      show_progress_every_n_steps?: number
       /**
-       * Show Progress Type 
-       * @description Image creation progress preview mode 
+       * Show Progress Type
+       * @description Image creation progress preview mode
        * @default Full
        */
-      show_progress_type?: string;
+      show_progress_type?: string
       /**
-       * Show Progress Grid 
-       * @description Show previews of all images generated in a batch as a grid 
+       * Show Progress Grid
+       * @description Show previews of all images generated in a batch as a grid
        * @default true
        */
-      show_progress_grid?: boolean;
+      show_progress_grid?: boolean
       /**
-       * Return Grid 
-       * @description Show grid in results for web 
+       * Return Grid
+       * @description Show grid in results for web
        * @default true
        */
-      return_grid?: boolean;
+      return_grid?: boolean
       /**
-       * Do Not Show Images 
-       * @description Do not show any images in results for web 
+       * Do Not Show Images
+       * @description Do not show any images in results for web
        * @default false
        */
-      do_not_show_images?: boolean;
+      do_not_show_images?: boolean
       /**
-       * Add Model Hash To Info 
-       * @description Add model hash to generation information 
+       * Add Model Hash To Info
+       * @description Add model hash to generation information
        * @default true
        */
-      add_model_hash_to_info?: boolean;
+      add_model_hash_to_info?: boolean
       /**
-       * Add Model Name To Info 
-       * @description Add model name to generation information 
+       * Add Model Name To Info
+       * @description Add model name to generation information
        * @default false
        */
-      add_model_name_to_info?: boolean;
+      add_model_name_to_info?: boolean
       /**
-       * Disable Weights Auto Swap 
-       * @description When reading generation parameters from text into UI (from PNG info or pasted text), do not change the selected model/checkpoint. 
+       * Disable Weights Auto Swap
+       * @description When reading generation parameters from text into UI (from PNG info or pasted text), do not change the selected model/checkpoint.
        * @default false
        */
-      disable_weights_auto_swap?: boolean;
+      disable_weights_auto_swap?: boolean
       /**
-       * Send Seed 
-       * @description Send seed when sending prompt or image to other interface 
+       * Send Seed
+       * @description Send seed when sending prompt or image to other interface
        * @default true
        */
-      send_seed?: boolean;
+      send_seed?: boolean
       /**
-       * Send Size 
-       * @description Send size when sending prompt or image to another interface 
+       * Send Size
+       * @description Send size when sending prompt or image to another interface
        * @default true
        */
-      send_size?: boolean;
+      send_size?: boolean
       /**
-       * Font 
-       * @description Font for image grids that have text 
+       * Font
+       * @description Font for image grids that have text
        * @default
        */
-      font?: string;
+      font?: string
       /**
-       * Js Modal Lightbox 
-       * @description Enable full page image viewer 
+       * Js Modal Lightbox
+       * @description Enable full page image viewer
        * @default true
        */
-      js_modal_lightbox?: boolean;
+      js_modal_lightbox?: boolean
       /**
-       * Js Modal Lightbox Initially Zoomed 
-       * @description Show images zoomed in by default in full page image viewer 
+       * Js Modal Lightbox Initially Zoomed
+       * @description Show images zoomed in by default in full page image viewer
        * @default true
        */
-      js_modal_lightbox_initially_zoomed?: boolean;
+      js_modal_lightbox_initially_zoomed?: boolean
       /**
-       * Show Progress In Title 
-       * @description Show generation progress in window title. 
+       * Show Progress In Title
+       * @description Show generation progress in window title.
        * @default true
        */
-      show_progress_in_title?: boolean;
+      show_progress_in_title?: boolean
       /**
-       * Quicksettings 
-       * @description Quicksettings list 
+       * Quicksettings
+       * @description Quicksettings list
        * @default sd_model_checkpoint
        */
-      quicksettings?: string;
+      quicksettings?: string
       /**
-       * Localization 
-       * @description Localization (requires restart) 
+       * Localization
+       * @description Localization (requires restart)
        * @default None
        */
-      localization?: string;
+      localization?: string
       /**
-       * Hide Samplers 
-       * @description Hide samplers in user interface (requires restart) 
+       * Hide Samplers
+       * @description Hide samplers in user interface (requires restart)
        * @default []
        */
-      hide_samplers?: (Record<string, never>)[];
+      hide_samplers?: Record<string, never>[]
       /**
-       * Eta Ddim 
-       * @description eta (noise multiplier) for DDIM 
+       * Eta Ddim
+       * @description eta (noise multiplier) for DDIM
        * @default 0
        */
-      eta_ddim?: number;
+      eta_ddim?: number
       /**
-       * Eta Ancestral 
-       * @description eta (noise multiplier) for ancestral samplers 
+       * Eta Ancestral
+       * @description eta (noise multiplier) for ancestral samplers
        * @default 1
        */
-      eta_ancestral?: number;
+      eta_ancestral?: number
       /**
-       * Ddim Discretize 
-       * @description img2img DDIM discretize 
+       * Ddim Discretize
+       * @description img2img DDIM discretize
        * @default uniform
        */
-      ddim_discretize?: string;
+      ddim_discretize?: string
       /**
-       * S Churn 
-       * @description sigma churn 
+       * S Churn
+       * @description sigma churn
        * @default 0
        */
-      s_churn?: number;
+      s_churn?: number
       /**
-       * S Tmin 
-       * @description sigma tmin 
+       * S Tmin
+       * @description sigma tmin
        * @default 0
        */
-      s_tmin?: number;
+      s_tmin?: number
       /**
-       * S Noise 
-       * @description sigma noise 
+       * S Noise
+       * @description sigma noise
        * @default 1
        */
-      s_noise?: number;
+      s_noise?: number
       /**
-       * Eta Noise Seed Delta 
-       * @description Eta noise seed delta 
+       * Eta Noise Seed Delta
+       * @description Eta noise seed delta
        * @default 0
        */
-      eta_noise_seed_delta?: number;
+      eta_noise_seed_delta?: number
       /**
-       * Disabled Extensions 
-       * @description Disable those extensions 
+       * Disabled Extensions
+       * @description Disable those extensions
        * @default []
        */
-      disabled_extensions?: (Record<string, never>)[];
-    };
+      disabled_extensions?: Record<string, never>[]
+    }
     /** PNGInfoRequest */
     PNGInfoRequest: {
       /**
-       * Image 
+       * Image
        * @description The base64 encoded PNG image
        */
-      image: string;
-    };
+      image: string
+    }
     /** PNGInfoResponse */
     PNGInfoResponse: {
       /**
-       * Image info 
+       * Image info
        * @description A string with all the info the image had
        */
-      info: string;
-    };
+      info: string
+    }
     /** PredictBody */
     PredictBody: {
       /** Session Hash */
-      session_hash?: string;
+      session_hash?: string
       /** Data */
-      data: (Record<string, never>)[];
+      data: Record<string, never>[]
       /** Fn Index */
-      fn_index?: number;
+      fn_index?: number
       /**
-       * Batched 
+       * Batched
        * @default false
        */
-      batched?: boolean;
-    };
+      batched?: boolean
+    }
     /** PreprocessResponse */
     PreprocessResponse: {
       /**
-       * Preprocess info 
+       * Preprocess info
        * @description Response string from preprocessing task.
        */
-      info: string;
-    };
+      info: string
+    }
     /** ProgressResponse */
     ProgressResponse: {
       /**
-       * Progress 
+       * Progress
        * @description The progress with a range of 0 to 1
        */
-      progress: number;
+      progress: number
       /** ETA in secs */
-      eta_relative: number;
+      eta_relative: number
       /**
-       * State 
+       * State
        * @description The current state snapshot
        */
-      state: Record<string, never>;
+      state: Record<string, never>
       /**
-       * Current image 
+       * Current image
        * @description The current image in base64 format. opts.show_progress_every_n_steps is required for this to work.
        */
-      current_image?: string;
-    };
+      current_image?: string
+    }
     /** PromptStyleItem */
     PromptStyleItem: {
       /** Name */
-      name: string;
+      name: string
       /** Prompt */
-      prompt?: string;
+      prompt?: string
       /** Negative Prompt */
-      negative_prompt?: string;
-    };
+      negative_prompt?: string
+    }
     /** RealesrganItem */
     RealesrganItem: {
       /** Name */
-      name: string;
+      name: string
       /** Path */
-      path?: string;
+      path?: string
       /** Scale */
-      scale?: number;
-    };
+      scale?: number
+    }
     /** ResetBody */
     ResetBody: {
       /** Session Hash */
-      session_hash: string;
+      session_hash: string
       /** Fn Index */
-      fn_index: number;
-    };
+      fn_index: number
+    }
     /** SDModelItem */
     SDModelItem: {
       /** Title */
-      title: string;
+      title: string
       /** Model Name */
-      model_name: string;
+      model_name: string
       /** Hash */
-      hash: string;
+      hash: string
       /** Filename */
-      filename: string;
+      filename: string
       /** Config file */
-      config: string;
-    };
+      config: string
+    }
     /** SamplerItem */
     SamplerItem: {
       /** Name */
-      name: string;
+      name: string
       /** Aliases */
-      aliases: (string)[];
+      aliases: string[]
       /** Options */
       options: {
-        [key: string]: string | undefined;
-      };
-    };
+        [key: string]: string | undefined
+      }
+    }
     /** StableDiffusionProcessingImg2Img */
     StableDiffusionProcessingImg2Img: {
       /** Init Images */
-      init_images?: (Record<string, never>)[];
+      init_images?: string[]
       /**
-       * Resize Mode 
+       * Resize Mode
        * @default 0
        */
-      resize_mode?: number;
+      resize_mode?: number
       /**
-       * Denoising Strength 
+       * Denoising Strength
        * @default 0.75
        */
-      denoising_strength?: number;
+      denoising_strength?: number
       /** Mask */
-      mask?: string;
+      mask?: string
       /**
-       * Mask Blur 
+       * Mask Blur
        * @default 4
        */
-      mask_blur?: number;
+      mask_blur?: number
       /**
-       * Inpainting Fill 
+       * Inpainting Fill
        * @default 0
        */
-      inpainting_fill?: number;
+      inpainting_fill?: number
       /**
-       * Inpaint Full Res 
+       * Inpaint Full Res
        * @default true
        */
-      inpaint_full_res?: boolean;
+      inpaint_full_res?: boolean
       /**
-       * Inpaint Full Res Padding 
+       * Inpaint Full Res Padding
        * @default 0
        */
-      inpaint_full_res_padding?: number;
+      inpaint_full_res_padding?: number
       /**
-       * Inpainting Mask Invert 
+       * Inpainting Mask Invert
        * @default 0
        */
-      inpainting_mask_invert?: number;
+      inpainting_mask_invert?: number
       /** Initial Noise Multiplier */
-      initial_noise_multiplier?: number;
+      initial_noise_multiplier?: number
       /**
-       * Prompt 
+       * Prompt
        * @default
        */
-      prompt?: string;
+      prompt?: string
       /** Styles */
-      styles?: (string)[];
+      styles?: string[]
       /**
-       * Seed 
+       * Seed
        * @default -1
        */
-      seed?: number;
+      seed?: number
       /**
-       * Subseed 
+       * Subseed
        * @default -1
        */
-      subseed?: number;
+      subseed?: number
       /**
-       * Subseed Strength 
+       * Subseed Strength
        * @default 0
        */
-      subseed_strength?: number;
+      subseed_strength?: number
       /**
-       * Seed Resize From H 
+       * Seed Resize From H
        * @default -1
        */
-      seed_resize_from_h?: number;
+      seed_resize_from_h?: number
       /**
-       * Seed Resize From W 
+       * Seed Resize From W
        * @default -1
        */
-      seed_resize_from_w?: number;
+      seed_resize_from_w?: number
       /** Sampler Name */
-      sampler_name?: string;
+      sampler_name?: string
       /**
-       * Batch Size 
+       * Batch Size
        * @default 1
        */
-      batch_size?: number;
+      batch_size?: number
       /**
-       * N Iter 
+       * N Iter
        * @default 1
        */
-      n_iter?: number;
+      n_iter?: number
       /**
-       * Steps 
+       * Steps
        * @default 50
        */
-      steps?: number;
+      steps?: number
       /**
-       * Cfg Scale 
+       * Cfg Scale
        * @default 7
        */
-      cfg_scale?: number;
+      cfg_scale?: number
       /**
-       * Width 
+       * Width
        * @default 512
        */
-      width?: number;
+      width?: number
       /**
-       * Height 
+       * Height
        * @default 512
        */
-      height?: number;
+      height?: number
       /**
-       * Restore Faces 
+       * Restore Faces
        * @default false
        */
-      restore_faces?: boolean;
+      restore_faces?: boolean
       /**
-       * Tiling 
+       * Tiling
        * @default false
        */
-      tiling?: boolean;
+      tiling?: boolean
       /** Negative Prompt */
-      negative_prompt?: string;
+      negative_prompt?: string
       /** Eta */
-      eta?: number;
+      eta?: number
       /**
-       * S Churn 
+       * S Churn
        * @default 0
        */
-      s_churn?: number;
+      s_churn?: number
       /** S Tmax */
-      s_tmax?: number;
+      s_tmax?: number
       /**
-       * S Tmin 
+       * S Tmin
        * @default 0
        */
-      s_tmin?: number;
+      s_tmin?: number
       /**
-       * S Noise 
+       * S Noise
        * @default 1
        */
-      s_noise?: number;
+      s_noise?: number
       /** Override Settings */
-      override_settings?: Record<string, never>;
+      override_settings?: Record<string, never>
       /**
-       * Override Settings Restore Afterwards 
+       * Override Settings Restore Afterwards
        * @default true
        */
-      override_settings_restore_afterwards?: boolean;
+      override_settings_restore_afterwards?: boolean
       /**
-       * Sampler Index 
+       * Sampler Index
        * @default Euler
        */
-      sampler_index?: string;
+      sampler_index?: string
       /**
-       * Include Init Images 
+       * Include Init Images
        * @default false
        */
-      include_init_images?: boolean;
-    };
+      include_init_images?: boolean
+    }
     /** StableDiffusionProcessingTxt2Img */
     StableDiffusionProcessingTxt2Img: {
       /**
-       * Enable Hr 
+       * Enable Hr
        * @default false
        */
-      enable_hr?: boolean;
+      enable_hr?: boolean
       /**
-       * Denoising Strength 
+       * Denoising Strength
        * @default 0
        */
-      denoising_strength?: number;
+      denoising_strength?: number
       /**
-       * Firstphase Width 
+       * Firstphase Width
        * @default 0
        */
-      firstphase_width?: number;
+      firstphase_width?: number
       /**
-       * Firstphase Height 
+       * Firstphase Height
        * @default 0
        */
-      firstphase_height?: number;
+      firstphase_height?: number
       /**
-       * Prompt 
+       * Prompt
        * @default
        */
-      prompt?: string;
+      prompt?: string
       /** Styles */
-      styles?: (string)[];
+      styles?: string[]
       /**
-       * Seed 
+       * Seed
        * @default -1
        */
-      seed?: number;
+      seed?: number
       /**
-       * Subseed 
+       * Subseed
        * @default -1
        */
-      subseed?: number;
+      subseed?: number
       /**
-       * Subseed Strength 
+       * Subseed Strength
        * @default 0
        */
-      subseed_strength?: number;
+      subseed_strength?: number
       /**
-       * Seed Resize From H 
+       * Seed Resize From H
        * @default -1
        */
-      seed_resize_from_h?: number;
+      seed_resize_from_h?: number
       /**
-       * Seed Resize From W 
+       * Seed Resize From W
        * @default -1
        */
-      seed_resize_from_w?: number;
+      seed_resize_from_w?: number
       /** Sampler Name */
-      sampler_name?: string;
+      sampler_name?: string
       /**
-       * Batch Size 
+       * Batch Size
        * @default 1
        */
-      batch_size?: number;
+      batch_size?: number
       /**
-       * N Iter 
+       * N Iter
        * @default 1
        */
-      n_iter?: number;
+      n_iter?: number
       /**
-       * Steps 
+       * Steps
        * @default 50
        */
-      steps?: number;
+      steps?: number
       /**
-       * Cfg Scale 
+       * Cfg Scale
        * @default 7
        */
-      cfg_scale?: number;
+      cfg_scale?: number
       /**
-       * Width 
+       * Width
        * @default 512
        */
-      width?: number;
+      width?: number
       /**
-       * Height 
+       * Height
        * @default 512
        */
-      height?: number;
+      height?: number
       /**
-       * Restore Faces 
+       * Restore Faces
        * @default false
        */
-      restore_faces?: boolean;
+      restore_faces?: boolean
       /**
-       * Tiling 
+       * Tiling
        * @default false
        */
-      tiling?: boolean;
+      tiling?: boolean
       /** Negative Prompt */
-      negative_prompt?: string;
+      negative_prompt?: string
       /** Eta */
-      eta?: number;
+      eta?: number
       /**
-       * S Churn 
+       * S Churn
        * @default 0
        */
-      s_churn?: number;
+      s_churn?: number
       /** S Tmax */
-      s_tmax?: number;
+      s_tmax?: number
       /**
-       * S Tmin 
+       * S Tmin
        * @default 0
        */
-      s_tmin?: number;
+      s_tmin?: number
       /**
-       * S Noise 
+       * S Noise
        * @default 1
        */
-      s_noise?: number;
+      s_noise?: number
       /** Override Settings */
-      override_settings?: Record<string, never>;
+      override_settings?: Record<string, never>
       /**
-       * Override Settings Restore Afterwards 
+       * Override Settings Restore Afterwards
        * @default true
        */
-      override_settings_restore_afterwards?: boolean;
+      override_settings_restore_afterwards?: boolean
       /**
-       * Sampler Index 
+       * Sampler Index
        * @default Euler
        */
-      sampler_index?: string;
-    };
+      sampler_index?: string
+    }
     /** TextToImageResponse */
     TextToImageResponse: {
       /**
-       * Image 
+       * Image
        * @description The generated image in base64 format.
        */
-      images?: (string)[];
+      images?: string[]
       /** Parameters */
-      parameters: Record<string, never>;
+      parameters: Record<string, never>
       /** Info */
-      info: string;
-    };
+      info: string
+    }
     /** TrainResponse */
     TrainResponse: {
       /**
-       * Train info 
+       * Train info
        * @description Response string from train embedding or hypernetwork task.
        */
-      info: string;
-    };
+      info: string
+    }
     /** UpscalerItem */
     UpscalerItem: {
       /** Name */
-      name: string;
+      name: string
       /** Model Name */
-      model_name?: string;
+      model_name?: string
       /** Path */
-      model_path?: string;
+      model_path?: string
       /** URL */
-      model_url?: string;
-    };
+      model_url?: string
+    }
     /** ValidationError */
     ValidationError: {
       /** Location */
-      loc: (string | number)[];
+      loc: (string | number)[]
       /** Message */
-      msg: string;
+      msg: string
       /** Error Type */
-      type: string;
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+      type: string
+    }
+  }
+  responses: never
+  parameters: never
+  requestBodies: never
+  headers: never
+  pathItems: never
 }
 
-export type external = Record<string, never>;
+export type external = Record<string, never>
 
 export interface operations {
-
   get_current_user_user__get: {
     /** Get Current User */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   get_current_user_user_get: {
     /** Get Current User */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   login_check_login_check__get: {
     /** Login Check */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   login_check_login_check_get: {
     /** Login Check */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   get_token_token__get: {
     /** Get Token */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   get_token_token_get: {
     /** Get Token */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   app_id_app_id__get: {
     /** App Id */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   app_id_app_id_get: {
     /** App Id */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   login_login__post: {
     /** Login */
     requestBody: {
       content: {
-        "application/x-www-form-urlencoded": components["schemas"]["Body_login_login__post"];
-      };
-    };
+        'application/x-www-form-urlencoded': components['schemas']['Body_login_login__post']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   login_login_post: {
     /** Login */
     requestBody: {
       content: {
-        "application/x-www-form-urlencoded": components["schemas"]["Body_login_login_post"];
-      };
-    };
+        'application/x-www-form-urlencoded': components['schemas']['Body_login_login_post']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   main__get: {
     /** Main */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "text/html": string;
-        };
-      };
-    };
-  };
+          'text/html': string
+        }
+      }
+    }
+  }
   main__head: {
     /** Main */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "text/html": string;
-        };
-      };
-    };
-  };
+          'text/html': string
+        }
+      }
+    }
+  }
   get_config_config_get: {
     /** Get Config */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   get_config_config__get: {
     /** Get Config */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   static_resource_static__path__get: {
     /** Static Resource */
     parameters: {
       path: {
-        path: string;
-      };
-    };
+        path: string
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   build_resource_assets__path__get: {
     /** Build Resource */
     parameters: {
       path: {
-        path: string;
-      };
-    };
+        path: string
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   favicon_favicon_ico_get: {
     /** Favicon */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   file_file__path__get: {
     /** File */
     parameters: {
       path: {
-        path: string;
-      };
-    };
+        path: string
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   file_deprecated_file__path__get: {
     /** File Deprecated */
     parameters: {
       path: {
-        path: string;
-      };
-    };
+        path: string
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   reset_iterator_reset_post: {
     /** Reset Iterator */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ResetBody"];
-      };
-    };
+        'application/json': components['schemas']['ResetBody']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   reset_iterator_reset__post: {
     /** Reset Iterator */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ResetBody"];
-      };
-    };
+        'application/json': components['schemas']['ResetBody']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   predict_api__api_name___post: {
     /** Predict */
     parameters: {
       path: {
-        api_name: string;
-      };
-    };
+        api_name: string
+      }
+    }
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PredictBody"];
-      };
-    };
+        'application/json': components['schemas']['PredictBody']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   predict_api__api_name__post: {
     /** Predict */
     parameters: {
       path: {
-        api_name: string;
-      };
-    };
+        api_name: string
+      }
+    }
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PredictBody"];
-      };
-    };
+        'application/json': components['schemas']['PredictBody']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   predict_run__api_name___post: {
     /** Predict */
     parameters: {
       path: {
-        api_name: string;
-      };
-    };
+        api_name: string
+      }
+    }
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PredictBody"];
-      };
-    };
+        'application/json': components['schemas']['PredictBody']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   predict_run__api_name__post: {
     /** Predict */
     parameters: {
       path: {
-        api_name: string;
-      };
-    };
+        api_name: string
+      }
+    }
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PredictBody"];
-      };
-    };
+        'application/json': components['schemas']['PredictBody']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   get_queue_status_queue_status_get: {
     /** Get Queue Status */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["Estimation"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['Estimation']
+        }
+      }
+    }
+  }
   startup_events_startup_events_get: {
     /** Startup Events */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   text2imgapi_sdapi_v1_txt2img_post: {
     /** Text2Imgapi */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["StableDiffusionProcessingTxt2Img"];
-      };
-    };
+        'application/json': components['schemas']['StableDiffusionProcessingTxt2Img']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["TextToImageResponse"];
-        };
-      };
+          'application/json': components['schemas']['TextToImageResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   img2imgapi_sdapi_v1_img2img_post: {
     /** Img2Imgapi */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["StableDiffusionProcessingImg2Img"];
-      };
-    };
+        'application/json': components['schemas']['StableDiffusionProcessingImg2Img']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["ImageToImageResponse"];
-        };
-      };
+          'application/json': components['schemas']['ImageToImageResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   extras_single_image_api_sdapi_v1_extra_single_image_post: {
     /** Extras Single Image Api */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ExtrasSingleImageRequest"];
-      };
-    };
+        'application/json': components['schemas']['ExtrasSingleImageRequest']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["ExtrasSingleImageResponse"];
-        };
-      };
+          'application/json': components['schemas']['ExtrasSingleImageResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   extras_batch_images_api_sdapi_v1_extra_batch_images_post: {
     /** Extras Batch Images Api */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ExtrasBatchImagesRequest"];
-      };
-    };
+        'application/json': components['schemas']['ExtrasBatchImagesRequest']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["ExtrasBatchImagesResponse"];
-        };
-      };
+          'application/json': components['schemas']['ExtrasBatchImagesResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   pnginfoapi_sdapi_v1_png_info_post: {
     /** Pnginfoapi */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PNGInfoRequest"];
-      };
-    };
+        'application/json': components['schemas']['PNGInfoRequest']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["PNGInfoResponse"];
-        };
-      };
+          'application/json': components['schemas']['PNGInfoResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   progressapi_sdapi_v1_progress_get: {
     /** Progressapi */
     parameters?: {
       query?: {
-        skip_current_image?: boolean;
-      };
-    };
+        skip_current_image?: boolean
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["ProgressResponse"];
-        };
-      };
+          'application/json': components['schemas']['ProgressResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   interrogateapi_sdapi_v1_interrogate_post: {
     /** Interrogateapi */
     requestBody: {
       content: {
-        "application/json": components["schemas"]["InterrogateRequest"];
-      };
-    };
+        'application/json': components['schemas']['InterrogateRequest']
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   interruptapi_sdapi_v1_interrupt_post: {
     /** Interruptapi */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   skip_sdapi_v1_skip_post: {
     /** Skip */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   get_config_sdapi_v1_options_get: {
     /** Get Config */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["Options"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['Options']
+        }
+      }
+    }
+  }
   set_config_sdapi_v1_options_post: {
     /** Set Config */
     requestBody: {
       content: {
-        "application/json": Record<string, never>;
-      };
-    };
+        'application/json': Record<string, never>
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
+          'application/json': Record<string, never>
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   get_cmd_flags_sdapi_v1_cmd_flags_get: {
     /** Get Cmd Flags */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["Flags"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['Flags']
+        }
+      }
+    }
+  }
   get_samplers_sdapi_v1_samplers_get: {
     /** Get Samplers */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["SamplerItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['SamplerItem'][]
+        }
+      }
+    }
+  }
   get_upscalers_sdapi_v1_upscalers_get: {
     /** Get Upscalers */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["UpscalerItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['UpscalerItem'][]
+        }
+      }
+    }
+  }
   get_sd_models_sdapi_v1_sd_models_get: {
     /** Get Sd Models */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["SDModelItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['SDModelItem'][]
+        }
+      }
+    }
+  }
   get_hypernetworks_sdapi_v1_hypernetworks_get: {
     /** Get Hypernetworks */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["HypernetworkItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HypernetworkItem'][]
+        }
+      }
+    }
+  }
   get_face_restorers_sdapi_v1_face_restorers_get: {
     /** Get Face Restorers */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["FaceRestorerItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['FaceRestorerItem'][]
+        }
+      }
+    }
+  }
   get_realesrgan_models_sdapi_v1_realesrgan_models_get: {
     /** Get Realesrgan Models */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["RealesrganItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['RealesrganItem'][]
+        }
+      }
+    }
+  }
   get_prompt_styles_sdapi_v1_prompt_styles_get: {
     /** Get Prompt Styles */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["PromptStyleItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['PromptStyleItem'][]
+        }
+      }
+    }
+  }
   get_artists_categories_sdapi_v1_artist_categories_get: {
     /** Get Artists Categories */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (string)[];
-        };
-      };
-    };
-  };
+          'application/json': string[]
+        }
+      }
+    }
+  }
   get_artists_sdapi_v1_artists_get: {
     /** Get Artists */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": (components["schemas"]["ArtistItem"])[];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['ArtistItem'][]
+        }
+      }
+    }
+  }
   refresh_checkpoints_sdapi_v1_refresh_checkpoints_post: {
     /** Refresh Checkpoints */
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
   create_embedding_sdapi_v1_create_embedding_post: {
     /** Create Embedding */
     requestBody: {
       content: {
-        "application/json": Record<string, never>;
-      };
-    };
+        'application/json': Record<string, never>
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["CreateResponse"];
-        };
-      };
+          'application/json': components['schemas']['CreateResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   create_hypernetwork_sdapi_v1_create_hypernetwork_post: {
     /** Create Hypernetwork */
     requestBody: {
       content: {
-        "application/json": Record<string, never>;
-      };
-    };
+        'application/json': Record<string, never>
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["CreateResponse"];
-        };
-      };
+          'application/json': components['schemas']['CreateResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   preprocess_sdapi_v1_preprocess_post: {
     /** Preprocess */
     requestBody: {
       content: {
-        "application/json": Record<string, never>;
-      };
-    };
+        'application/json': Record<string, never>
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["PreprocessResponse"];
-        };
-      };
+          'application/json': components['schemas']['PreprocessResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   train_embedding_sdapi_v1_train_embedding_post: {
     /** Train Embedding */
     requestBody: {
       content: {
-        "application/json": Record<string, never>;
-      };
-    };
+        'application/json': Record<string, never>
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["TrainResponse"];
-        };
-      };
+          'application/json': components['schemas']['TrainResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
   train_hypernetwork_sdapi_v1_train_hypernetwork_post: {
     /** Train Hypernetwork */
     requestBody: {
       content: {
-        "application/json": Record<string, never>;
-      };
-    };
+        'application/json': Record<string, never>
+      }
+    }
     responses: {
       /** @description Successful Response */
       200: {
         content: {
-          "application/json": components["schemas"]["TrainResponse"];
-        };
-      };
+          'application/json': components['schemas']['TrainResponse']
+        }
+      }
       /** @description Validation Error */
       422: {
         content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
+          'application/json': components['schemas']['HTTPValidationError']
+        }
+      }
+    }
+  }
 }

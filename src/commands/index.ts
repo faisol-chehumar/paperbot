@@ -1,14 +1,20 @@
 import {
   AutocompleteInteraction,
   ButtonInteraction,
+  ChannelType,
   ChatInputCommandInteraction,
   Collection,
+  EmbedBuilder,
   Interaction,
   Message,
+  MessageReaction,
   ModalSubmitInteraction,
+  PartialMessageReaction,
+  PartialUser,
   Routes,
   SelectMenuInteraction,
   SlashCommandBuilder,
+  User,
 } from 'discord.js'
 import * as fs from 'fs'
 
@@ -154,4 +160,90 @@ export function messageHandler(message: Message) {
   const command = commandCollection.get('chatgpt')
   console.log('Mentioned by', message.author.username, '-', message.content)
   command?.onMention?.(message)
+}
+
+export async function reactionHandler(
+  reaction: MessageReaction | PartialMessageReaction,
+  user: User | PartialUser
+) {
+  // console.log(`Reaction received by ${user.username}`)
+  if (reaction.partial) {
+    reaction = await reaction.fetch()
+  }
+
+  if (
+    reaction.message.interaction?.commandName === 'diffuse' &&
+    reaction.emoji.name === '💯'
+  ) {
+    const message = reaction.message
+    const guild = await message.guild?.fetch()
+
+    if (!guild) return
+
+    const channels = await guild.channels.fetch()
+    let bestOfChannel = channels.find((channel) => channel?.name === 'best-of')
+
+    if (!bestOfChannel) {
+      bestOfChannel = await guild.channels.create({
+        name: 'best-of',
+        topic:
+          'Tag a message with 💯 to add it to this channel, only the best of the best :two_hearts:',
+        type: ChannelType.GuildText,
+      })
+    }
+
+    if (!bestOfChannel.isTextBased()) {
+      console.error('#best-of channel is not text based')
+      return
+    }
+
+    const messages = await bestOfChannel.messages.fetch()
+    const matchingMessage = messages.find(
+      (m) => m.embeds.find((e) => e.data.url === message.url) !== undefined
+    )
+
+    try {
+      if (!reaction.count) {
+        console.log(
+          `Removing ${message.content} for ${user.username} from #best-of`
+        )
+        if (matchingMessage) {
+          await matchingMessage?.delete()
+        } else {
+          console.error('Could not find matching message in #best-of')
+        }
+      } else if (reaction.count >= 1 && !matchingMessage) {
+        console.log(
+          `Adding ${message.content} for ${user.username} from #best-of`
+        )
+
+        const embed = new EmbedBuilder()
+          .setURL(message.url)
+          .setTitle(
+            `Generation by ${message.interaction?.user.username}, pinned by ${user.username}`
+          )
+
+        bestOfChannel.send({
+          embeds: [embed],
+          files: message.attachments.map((attachment) => attachment.url),
+        })
+      }
+    } catch (error) {
+      console.error('Could not pin message', error)
+    }
+
+    // const channel = await reaction.message.channel.fetch()
+    //
+    // try {
+    //   if (!reaction.count && message.pinned) {
+    //     console.log(`Unpinning message ${message.content} for ${user.username}`)
+    //     await channel.messages.unpin(message.id, 'No longer 💯')
+    //   } else if (reaction.count >= 1 && !message.pinned) {
+    //     console.log(`Pinning message ${message.content} for ${user.username}`)
+    //     await channel.messages.pin(message.id, '💯💯💯💯')
+    //   }
+    // } catch (error) {
+    //   console.error('Could not pin message', error)
+    // }
+  }
 }
