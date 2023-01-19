@@ -7,7 +7,11 @@ import {
 } from '../api/stablediffusion.js'
 import { prisma } from '../main.js'
 import { clearUndefinedFromObject } from '../utils/filter.js'
-import { currentModelName, StoredOptions } from './config-sd.js'
+import {
+  currentModelName,
+  StoredOptions,
+  updateCurrentModel,
+} from './config-sd.js'
 import { CommandInterface } from './index.js'
 
 const diffuse: CommandInterface = {
@@ -133,6 +137,8 @@ const diffuse: CommandInterface = {
       images,
       seed: actualSeed,
     } = await diffuseText2Image(finalPrompt, clearedOptions)
+
+    await updateCurrentModel()
 
     const attachments = images.map(
       (imageBuffer, index) =>

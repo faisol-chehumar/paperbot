@@ -13,6 +13,14 @@ export interface StoredOptions {
   sampler?: string
 }
 
+export const getCurrentModel = async () =>
+  (await get<StableDiffusionOptions>('http://127.0.0.1:7860/sdapi/v1/options'))
+    .sd_model_checkpoint
+
+export async function updateCurrentModel() {
+  currentModelName = await getCurrentModel()
+}
+
 async function init() {
   try {
     const models = await get<ModelResponse>(
@@ -21,11 +29,7 @@ async function init() {
     const samplers = await get<SampleResponse>(
       'http://127.0.0.1:7860/sdapi/v1/samplers'
     )
-    const modelName = (
-      await get<StableDiffusionOptions>(
-        'http://127.0.0.1:7860/sdapi/v1/options'
-      )
-    ).sd_model_checkpoint
+    const modelName = await getCurrentModel()
 
     return {
       modelName,

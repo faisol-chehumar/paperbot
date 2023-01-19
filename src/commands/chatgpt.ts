@@ -80,6 +80,7 @@ const chatgpt: CommandInterface = {
       // Check if there are any messages in the queue
       await handleQueue()
     } catch (error) {
+      queue.pop()
       console.error(error)
       await interaction.followUp({
         content: 'Something went wrong, please try again later.',
@@ -87,6 +88,11 @@ const chatgpt: CommandInterface = {
     }
   },
   async onMention(message) {
+    if ('name' in message.channel && message.channel.name === 'best-of') {
+      console.log('Ignoring message in best-of channel')
+      return
+    }
+
     const newConversation = message.content.includes('[[NEW]]')
 
     if (queue.length > 0) {

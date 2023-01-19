@@ -10,9 +10,9 @@
     "build:start": "npm run build && npm run start",
     "build:compile": "swc src -d build -D && rimraf build/plugins/**/node_modules/",
     "start": "cross-env NODE_ENV=production node build/main.js",
+    "start:all": "run-p dev script:magic-prompt script:chatgpt-tokens",
     "dev": "cross-env NODE_ENV=development nodemon --ignore scripts --exec ts-node --swc src/main.ts || (sleep 1; touch src/main.ts)",
     "dev:test": "cross-env NODE_ENV=development nodemon --ignore 'src/commands/*.ts' --exec ts-node --swc src/main.ts",
-    "dev:OLD": "cross-env NODE_ENV=development nodemon -L --watch src --exec cross-env SWCRC=true node -r @swc-node/register src/main.ts",
     "dev:start": "NODE_ENV=production node -r @swc-node/register src/main.ts",
     "type:check": "tsc --pretty --skipLibCheck --noEmit",
     "lint": "eslint --ext .ts src",
@@ -24,7 +24,7 @@
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev --name",
-    "magic-prompt": "cd scripts && poetry run magic_prompt",
+    "magic-prompt": "cd scripts/ && poetry run magic-prompt",
     "generate:sd-types": "npx openapi-typescript ./openapi.json --output ./src/types/openapi.d.ts"
   },
   "dependencies": {
